@@ -1,0 +1,253 @@
+Script started on 2026-10-12 15:18:21+03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="114" LINES="55"]
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ ls ?[K/
+[?2004l]133;C\]666;vte.shell.preexec!\[0m[01;36mbin[0m   [01;34mcdrom[0m  [01;34metc[0m   [01;36mlib[0m    [01;34mlost+found[0m  [01;34mmnt[0m  [01;34mproc[0m  [01;34mrun[0m   [01;34msnap[0m  swap.img  [30;42mtmp[0m  [01;34mvar[0m
+[01;34mboot[0m  [01;34mdev[0m    [01;34mhome[0m  [01;36mlib64[0m  [01;34mmedia[0m       [01;34mopt[0m  [01;34mroot[0m  [01;36msbin[0m  [01;34msrv[0m   [01;34msys[0m       [01;34musr[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ ls -ld /etc/passwd/bin/dev.[K/null/tmp
+[?2004l]133;C\]666;vte.shell.preexec!\ls: cannot access '/etc/passwd/bin/dev/null/tmp': Not a directory
+]666;vte.shell.postexec=2\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ ls -ld.[K/ec[Krc[K[Ktc/passws[Kd/bin/deb[Kv/ni[Kull/tmp
+[?2004l]133;C\]666;vte.shell.preexec!\[31merror[0m: unexpected argument '[33m-/[0m' found
+
+  [32mtip[0m: to pass '-/' as a value, use '-- -/'
+
+Usage: ls [OPTION]... [FILE]...
+
+For more information, try '--help'.
+]666;vte.shell.postexec=2\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -ld /etc /etc/passwd /bin /dev/null /tmp[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls -ld /etc /etc/passwd /bin /dev/null /tmp
+[?2004l]133;C\]666;vte.shell.preexec!\lrwxrwxrwx   1 root root     7 Apr 20 11:46 [0m[01;36m/bin[0m -> [01;34musr/bin[0m
+crw-rw-rw-   1 root root  1, 3 Oct  9 00:30 [40;33;01m/dev/null[0m
+drwxr-xr-x 149 root root 12288 Oct  7 18:24 [01;34m/etc[0m
+-rw-r--r--   1 root root  2861 Sep  5 02:29 /etc/passwd
+drwxrwxrwt  25 root root   580 Oct 12 15:17 [30;42m/tmp[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -l /dev | head[27mls -l /dev | head
+[?2004l]133;C\]666;vte.shell.preexec!\total 0
+crw-------  1 root    root     10,   262 Oct  9 00:30 acpi_thermal_rel
+crw-r--r--  1 root    root     10,   235 Oct  9 00:30 autofs
+drwxr-xr-x  2 root    root           720 Oct  8 22:07 block
+crw-------  1 root    root     10,   234 Oct  9 00:30 btrfs-control
+drwxr-xr-x  3 root    root            60 Oct  9 00:30 bus
+drwxr-xr-x  2 root    root          5260 Oct 12 15:12 char
+crw-------  1 root    tty       5,     1 Oct  9 00:30 console
+lrwxrwxrwx  1 root    root            11 Oct  9 00:30 core -> /proc/kcore
+drwxr-xr-x 18 root    root           360 Oct 12 15:12 cpu
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mfile /usr/bin/ls /etc/passwd /bin[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile /usr/bin/ls /etc/passwd /bin
+[?2004l]133;C\]666;vte.shell.preexec!\/usr/bin/ls: symbolic link to ../lib/cargo/bin/coreutils/ls
+/etc/passwd: ASCII text
+/bin:        symbolic link to usr/bin
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mdu -sh /var/log /usr[27mdu -sh /var/log /usr
+[?2004l]133;C\]666;vte.shell.preexec!\du: cannot read directory '/var/log/speech-dispatcher': Permission denied
+du: cannot read directory '/var/log/gdm3': Permission denied
+du: cannot read directory '/var/log/chrony': Permission denied
+du: cannot read directory '/var/log/private': Permission denied
+du: cannot read directory '/var/log/sssd': Permission denied
+207M	/var/log
+9.9G	/usr
+]666;vte.shell.postexec=1\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mecho hello > notes.txt[27mecho hello > notes.txt
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mstat notes.txt[27mstat notes.txt
+[?2004l]133;C\]666;vte.shell.preexec!\  File: notes.txt
+  size: 6         	Blocks: 8          IO Block: 4096   regular file
+Device: 259,5	Inode: 18749703    Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/ capziro)   Gid: ( 1000/ capziro)
+Access: 2026-10-12 15:20:46.497187070 +0300
+Modify: 2026-10-12 15:20:45.827182372 +0300
+Change: 2026-10-12 15:20:45.827182372 +0300
+ Birth: 2026-10-12 15:20:45.827182372 +0300
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -li notes.txt[27mls -li notes.txt
+[?2004l]133;C\]666;vte.shell.preexec!\18749703 -rw-rw-r-- 1 capziro capziro 6 Oct 12 15:20 notes.txt
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mln notes.txt hard.txt[27mln notes.txt hard.txt
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -li notes.txt hard.txt[27mls -li notes.txt hard.txt
+[?2004l]133;C\]666;vte.shell.preexec!\18749703 -rw-rw-r-- 2 capziro capziro 6 Oct 12 15:20 hard.txt
+18749703 -rw-rw-r-- 2 capziro capziro 6 Oct 12 15:20 notes.txt
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mrm notes.txt[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm notes.txt
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ c[7mat hard.txt ; ls -li hard.txt[27mat hard.txt ; ls -li hard.txt
+[?2004l]133;C\]666;vte.shell.preexec!\hello
+18749703 -rw-rw-r-- 1 capziro capziro 6 Oct 12 15:20 hard.txt
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mln -s hard.txt soft.txt[27mln -s hard.txt soft.txt
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -li hard.txt soft.txt  [27mls -li hard.txt soft.txt  
+[?2004l]133;C\]666;vte.shell.preexec!\18749703 -rw-rw-r-- 1 capziro capziro 6 Oct 12 15:20 hard.txt
+18750216 lrwxrwxrwx 1 capziro capziro 8 Oct 12 15:21 [0m[01;36msoft.txt[0m -> hard.txt
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ c[7mat soft.txt   [27mat soft.txt   
+[?2004l]133;C\]666;vte.shell.preexec!\hello
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mrm hard.txt[27mrm hard.txt
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ c[7mat soft.txt ; ls -l soft.txt[27mat soft.txt ; ls -l soft.txt
+[?2004l]133;C\]666;vte.shell.preexec!\cat: soft.txt: No such file or directory
+lrwxrwxrwx 1 capziro capziro 8 Oct 12 15:21 [0m[40;31;01msoft.txt[0m -> [40;31;01mhard.txt[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ m[7mkdir d ; ls -ld d  [27mkdir d ; ls -ld d  
+[?2004l]133;C\]666;vte.shell.preexec!\drwxrwxr-x 2 capziro capziro 4096 Oct 12 15:22 [0m[01;34md[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mmkdir d/x d/y ; ls -ld d  [27mmkdir d/x d/y ; ls -ld d  
+[?2004l]133;C\]666;vte.shell.preexec!\drwxrwxr-x 4 capziro capziro 4096 Oct 12 15:22 [0m[01;34md[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mecho x > one.txt ; ls -l one.txt ; du -h one.txt[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cecho x > one.txt ; ls -l one.txt ; du -h one.txt
+[?2004l]133;C\]666;vte.shell.preexec!\-rw-rw-r-- 1 capziro capziro 2 Oct 12 15:22 one.txt
+4.0K	one.txt
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mtruncate -s 1G big.img ; ls -lh big.img ; du -h big.img[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctruncate -s 1G big.img ; ls -lh big.img ; du -h big.img
+[?2004l]133;C\]666;vte.shell.preexec!\-rw-rw-r-- 1 capziro capziro 1.0G Oct 12 15:22 big.img
+0	big.img
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mrm big.img[27mrm big.img
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mecho secret > s.txt[27mecho secret > s.txt
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mchmod 600 s.txt ; ls -l s.txt[27mchmod 600 s.txt ; ls -l s.txt
+[?2004l]133;C\]666;vte.shell.preexec!\-rw------- 1 capziro capziro 7 Oct 12 15:23 s.txt
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mchmod 000 s.txt ; cat s.txt [27mchmod 000 s.txt ; cat s.txt 
+[?2004l]133;C\]666;vte.shell.preexec!\cat: s.txt: Permission denied
+]666;vte.shell.postexec=1\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mchmod u+r s.txt ; cat s.txt[27mchmod u+r s.txt ; cat s.txt
+[?2004l]133;C\]666;vte.shell.preexec!\secret
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mumask ; touch new.txt ; mkdir newdir ; [27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cumask ; touch new.txt ; mkdir newdir ; 
+[?2004l]133;C\]666;vte.shell.preexec!\0002
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -ld new.txt newdir[27mls -ld new.txt newdir
+[?2004l]133;C\]666;vte.shell.preexec!\-rw-rw-r-- 1 capziro capziro    0 Oct 12 15:24 new.txt
+drwxrwxr-x 2 capziro capziro 4096 Oct 12 15:24 [0m[01;34mnewdir[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mmkdir box ; echo hi > box/f[27mmkdir box ; echo hi > box/f
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mchmod u=r,go= box  ; ls box ; cat box/f  [27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cchmod u=r,go= box  ; ls box ; cat box/f  
+[?2004l]133;C\]666;vte.shell.preexec!\f
+cat: box/f: Permission denied
+]666;vte.shell.postexec=1\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ chmod u=r,go= box  ; ls box ; cat box/f  
+[?2004l]133;C\]666;vte.shell.preexec!\f
+cat: box/f: Permission denied
+]666;vte.shell.postexec=1\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mchmod u=x,go= box  ; ls box ; cat box/f [27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cchmod u=x,go= box  ; ls box ; cat box/f 
+[?2004l]133;C\]666;vte.shell.preexec!\ls: cannot open directory 'box': Permission denied
+hi
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mchmod 755 box [27mchmod 755 box 
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -l /usr/bin/passwd ; ls -ld /tmp[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls -l /usr/bin/passwd ; ls -ld /tmp
+[?2004l]133;C\]666;vte.shell.preexec!\-rwsr-xr-x 1 root root 93640 Feb  2  2026 [0m[37;41m/usr/bin/passwd[0m
+drwxrwxrwt 25 root root 580 Oct 12 15:17 [0m[30;42m/tmp[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mcat /etc/shadow    [27mcat /etc/shadow    
+[?2004l]133;C\]666;vte.shell.preexec!\cat: /etc/shadow: Permission denied
+]666;vte.shell.postexec=1\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -l /etc/shadow[27mls -l /etc/shadow
+[?2004l]133;C\]666;vte.shell.preexec!\-rw-r----- 1 root shadow 1347 Sep  5 02:32 /etc/shadow
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ lsblk
+[?2004l]133;C\]666;vte.shell.preexec!\NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0         7:0    0   4.3M  1 loop /snap/chromium-ffmpeg/120
+loop1         7:1    0     4K  1 loop /snap/bare/5
+loop3         7:3    0 528.4M  1 loop /snap/code/261
+loop4         7:4    0  63.8M  1 loop /snap/core20/2866
+loop5         7:5    0  63.8M  1 loop /snap/core20/2922
+loop6         7:6    0  66.8M  1 loop /snap/core24/1643
+loop7         7:7    0  14.2M  1 loop /snap/desktop-security-center/188
+loop8         7:8    0  14.2M  1 loop /snap/desktop-security-center/206
+loop9         7:9    0 260.8M  1 loop /snap/firefox/8863
+loop10        7:10   0 262.2M  1 loop /snap/firefox/8995
+loop11        7:11   0  16.5M  1 loop /snap/firmware-updater/226
+loop12        7:12   0 614.5M  1 loop /snap/gnome-46-2404/164
+loop13        7:13   0  91.7M  1 loop /snap/gtk-common-themes/1535
+loop14        7:14   0   1.5M  1 loop /snap/hwctl/123
+loop15        7:15   0   1.5M  1 loop /snap/hwctl/131
+loop16        7:16   0   402M  1 loop /snap/mesa-2404/1839
+loop17        7:17   0  18.8M  1 loop /snap/prompting-client/222
+loop18        7:18   0  18.4M  1 loop /snap/prompting-client/228
+loop19        7:19   0  11.8M  1 loop /snap/snap-store/1390
+loop20        7:20   0  50.3M  1 loop /snap/snapd/27738
+loop21        7:21   0  44.7M  1 loop /snap/snapd/28254
+loop22        7:22   0   828K  1 loop /snap/snapd-desktop-integration/391
+loop23        7:23   0 103.2M  1 loop /snap/telegram-desktop/7146
+loop24        7:24   0 103.2M  1 loop /snap/telegram-desktop/7150
+loop25        7:25   0 221.5M  1 loop /snap/thunderbird/1240
+loop26        7:26   0 221.4M  1 loop /snap/thunderbird/1255
+loop27        7:27   0   5.4M  1 loop /snap/chromium-ffmpeg/123
+nvme0n1     259:0    0 953.9G  0 disk 
+├─nvme0n1p1 259:1    0   100M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    16M  0 part 
+├─nvme0n1p3 259:3    0 487.4G  0 part 
+├─nvme0n1p4 259:4    0   887M  0 part 
+└─nvme0n1p5 259:5    0 464.7G  0 part /
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ df -h
+[?2004l]133;C\]666;vte.shell.preexec!\Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.0G  4.0M  3.0G   1% /run
+/dev/nvme0n1p5  457G   35G  399G   8% /
+tmpfs           7.5G   18M  7.4G   1% /dev/shm
+efivarfs        268K  171K   93K  65% /sys/firmware/efi/efivars
+none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs           7.5G   24M  7.4G   1% /tmp
+/dev/nvme0n1p1   96M   46M   51M  48% /boot/efi
+tmpfs           1.5G  4.2M  1.5G   1% /run/user/1000
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ mount \[K| grep ""/"[C
+[?2004l]133;C\]666;vte.shell.preexec!\tmpfs on [01;31m[K/[m[Krun type tmpfs (rw,nosuid,nodev,size=3109096k,nr_inodes=819200,mode=755,inode64)
+[01;31m[K/[m[Kdev[01;31m[K/[m[Knvme0n1p5 on [01;31m[K/[m[K type ext4 (rw,relatime)
+devtmpfs on [01;31m[K/[m[Kdev type devtmpfs (rw,nosuid,size=7679348k,nr_inodes=1919837,mode=755,inode64)
+tmpfs on [01;31m[K/[m[Kdev[01;31m[K/[m[Kshm type tmpfs (rw,nosuid,nodev,inode64,usrquota)
+devpts on [01;31m[K/[m[Kdev[01;31m[K/[m[Kpts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000)
+sysfs on [01;31m[K/[m[Ksys type sysfs (rw,nosuid,nodev,noexec,relatime)
+securityfs on [01;31m[K/[m[Ksys[01;31m[K/[m[Kkernel[01;31m[K/[m[Ksecurity type securityfs (rw,nosuid,nodev,noexec,relatime)
+cgroup2 on [01;31m[K/[m[Ksys[01;31m[K/[m[Kfs[01;31m[K/[m[Kcgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot,memory_hugetlb_accounting)
+none on [01;31m[K/[m[Ksys[01;31m[K/[m[Kfs[01;31m[K/[m[Kpstore type pstore (rw,nosuid,nodev,noexec,relatime)
+efivarfs on [01;31m[K/[m[Ksys[01;31m[K/[m[Kfirmware[01;31m[K/[m[Kefi[01;31m[K/[m[Kefivars type efivarfs (rw,nosuid,nodev,noexec,relatime)
+bpf on [01;31m[K/[m[Ksys[01;31m[K/[m[Kfs[01;31m[K/[m[Kbpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+configfs on [01;31m[K/[m[Ksys[01;31m[K/[m[Kkernel[01;31m[K/[m[Kconfig type configfs (rw,nosuid,nodev,noexec,relatime)
+proc on [01;31m[K/[m[Kproc type proc (rw,nosuid,nodev,noexec,relatime)
+systemd-1 on [01;31m[K/[m[Kproc[01;31m[K/[m[Ksys[01;31m[K/[m[Kfs[01;31m[K/[m[Kbinfmt_misc type autofs (rw,relatime,fd=37,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=10923)
+none on [01;31m[K/[m[Krun[01;31m[K/[m[Kcredentials[01;31m[K/[m[Ksystemd-journald.service type tmpfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,inode64,noswap)
+mqueue on [01;31m[K/[m[Kdev[01;31m[K/[m[Kmqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+fusectl on [01;31m[K/[m[Ksys[01;31m[K/[m[Kfs[01;31m[K/[m[Kfuse[01;31m[K/[m[Kconnections type fusectl (rw,nosuid,nodev,noexec,relatime)
+tracefs on [01;31m[K/[m[Ksys[01;31m[K/[m[Kkernel[01;31m[K/[m[Ktracing type tracefs (rw,nosuid,nodev,noexec,relatime)
+debugfs on [01;31m[K/[m[Ksys[01;31m[K/[m[Kkernel[01;31m[K/[m[Kdebug type debugfs (rw,nosuid,nodev,noexec,relatime)
+hugetlbfs on [01;31m[K/[m[Kdev[01;31m[K/[m[Khugepages type hugetlbfs (rw,nosuid,nodev,relatime,pagesize=2M)
+none on [01;31m[K/[m[Krun[01;31m[K/[m[Kcredentials[01;31m[K/[m[Ksystemd-resolved.service type tmpfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,inode64,noswap)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kchromium-ffmpeg_120.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kchromium-ffmpeg[01;31m[K/[m[K120 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kbare_5.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kbare[01;31m[K/[m[K5 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kcode_261.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kcode[01;31m[K/[m[K261 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kcore20_2866.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kcore20[01;31m[K/[m[K2866 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kcore20_2922.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kcore20[01;31m[K/[m[K2922 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kcore24_1643.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kcore24[01;31m[K/[m[K1643 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kdesktop-security-center_188.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kdesktop-security-center[01;31m[K/[m[K188 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kdesktop-security-center_206.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kdesktop-security-center[01;31m[K/[m[K206 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kfirefox_8863.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kfirefox[01;31m[K/[m[K8863 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kfirmware-updater_226.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kfirmware-updater[01;31m[K/[m[K226 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kfirefox_8995.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kfirefox[01;31m[K/[m[K8995 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kgnome-46-2404_164.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kgnome-46-2404[01;31m[K/[m[K164 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Khwctl_123.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Khwctl[01;31m[K/[m[K123 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kgtk-common-themes_1535.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kgtk-common-themes[01;31m[K/[m[K1535 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kmesa-2404_1839.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kmesa-2404[01;31m[K/[m[K1839 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Khwctl_131.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Khwctl[01;31m[K/[m[K131 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kprompting-client_222.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kprompting-client[01;31m[K/[m[K222 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kprompting-client_228.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kprompting-client[01;31m[K/[m[K228 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Ksnap-store_1390.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Ksnap-store[01;31m[K/[m[K1390 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Ksnapd_27738.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Ksnapd[01;31m[K/[m[K27738 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Ksnapd_28254.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Ksnapd[01;31m[K/[m[K28254 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Ksnapd-desktop-integration_391.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Ksnapd-desktop-integration[01;31m[K/[m[K391 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Ktelegram-desktop_7146.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Ktelegram-desktop[01;31m[K/[m[K7146 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Ktelegram-desktop_7150.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Ktelegram-desktop[01;31m[K/[m[K7150 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+tmpfs on [01;31m[K/[m[Ktmp type tmpfs (rw,nosuid,nodev,size=7772736k,nr_inodes=1048576,inode64,usrquota)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kthunderbird_1240.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kthunderbird[01;31m[K/[m[K1240 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kthunderbird_1255.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kthunderbird[01;31m[K/[m[K1255 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+[01;31m[K/[m[Kdev[01;31m[K/[m[Knvme0n1p1 on [01;31m[K/[m[Kboot[01;31m[K/[m[Kefi type vfat (rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro)
+binfmt_misc on [01;31m[K/[m[Kproc[01;31m[K/[m[Ksys[01;31m[K/[m[Kfs[01;31m[K/[m[Kbinfmt_misc type binfmt_misc (rw,nosuid,nodev,noexec,relatime)
+tmpfs on [01;31m[K/[m[Krun[01;31m[K/[m[Ksnapd[01;31m[K/[m[Kns type tmpfs (rw,nosuid,nodev,size=3109096k,nr_inodes=819200,mode=755,inode64)
+nsfs on [01;31m[K/[m[Krun[01;31m[K/[m[Ksnapd[01;31m[K/[m[Kns[01;31m[K/[m[Ksnapd-desktop-integration.mnt type nsfs (rw)
+tmpfs on [01;31m[K/[m[Krun[01;31m[K/[m[Kuser[01;31m[K/[m[K1000 type tmpfs (rw,nosuid,nodev,relatime,size=1554544k,nr_inodes=388636,mode=700,uid=1000,gid=1000,inode64)
+portal on [01;31m[K/[m[Krun[01;31m[K/[m[Kuser[01;31m[K/[m[K1000[01;31m[K/[m[Kdoc type fuse.portal (rw,nosuid,nodev,relatime,user_id=1000,group_id=1000)
+gvfsd-fuse on [01;31m[K/[m[Krun[01;31m[K/[m[Kuser[01;31m[K/[m[K1000[01;31m[K/[m[Kgvfs type fuse.gvfsd-fuse (rw,nosuid,nodev,relatime,user_id=1000,group_id=1000)
+nsfs on [01;31m[K/[m[Krun[01;31m[K/[m[Ksnapd[01;31m[K/[m[Kns[01;31m[K/[m[Kprompting-client.mnt type nsfs (rw)
+nsfs on [01;31m[K/[m[Krun[01;31m[K/[m[Ksnapd[01;31m[K/[m[Kns[01;31m[K/[m[Kfirefox.mnt type nsfs (rw)
+[01;31m[K/[m[Kvar[01;31m[K/[m[Klib[01;31m[K/[m[Ksnapd[01;31m[K/[m[Ksnaps[01;31m[K/[m[Kchromium-ffmpeg_123.snap on [01;31m[K/[m[Ksnap[01;31m[K/[m[Kchromium-ffmpeg[01;31m[K/[m[K123 type squashfs (ro,nodev,relatime,errors=continue,threads=single,x-gdu.hide,x-gvfs-hide)
+nsfs on [01;31m[K/[m[Krun[01;31m[K/[m[Ksnapd[01;31m[K/[m[Kns[01;31m[K/[m[Kfirmware-updater.mnt type nsfs (rw)
+nsfs on [01;31m[K/[m[Krun[01;31m[K/[m[Ksnapd[01;31m[K/[m[Kns[01;31m[K/[m[Ktelegram-desktop.mnt type nsfs (rw)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ +[K^[[200~grep -c processor /proc/cpuinfo~[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[7mgrep -c processor /proc/cpuinfo[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep -c processor /proc/cpuinfo
+[?2004l]133;C\]666;vte.shell.preexec!\16
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mhead -3 /proc/meminfo[27mhead -3 /proc/meminfo
+[?2004l]133;C\]666;vte.shell.preexec!\MemTotal:       15545468 kB
+MemFree:         1255700 kB
+MemAvailable:    7305648 kB
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mhead -5 /proc/self/status[27mhead -5 /proc/self/status
+[?2004l]133;C\]666;vte.shell.preexec!\Name:	head
+Umask:	0002
+State:	R (running)
+Tgid:	46267
+Ngid:	0
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mls -l /proc/self/fd[27mls -l /proc/self/fd
+[?2004l]133;C\]666;vte.shell.preexec!\total 0
+lrwx------ 1 capziro capziro 64 Oct 12 15:27 [0m[01;36m0[0m -> [40;33;01m/dev/pts/3[0m
+lrwx------ 1 capziro capziro 64 Oct 12 15:27 [01;36m1[0m -> [40;33;01m/dev/pts/3[0m
+lrwx------ 1 capziro capziro 64 Oct 12 15:27 [01;36m2[0m -> [40;33;01m/dev/pts/3[0m
+lr-x------ 1 capziro capziro 64 Oct 12 15:27 [01;36m3[0m -> [01;34m/proc/46271/fd[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mgzip -c /etc/passwd > notes.txt ; [27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgzip -c /etc/passwd > notes.txt ; 
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [K]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mgzip -c /etc/passwd > notes.txt ; file notes.txt ; xxd notes.txt | head -1[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgzip -c /etc/passwd > notes.txt ; file notes.txt ; xxd notes.txt | head -1
+[?2004l]133;C\]666;vte.shell.preexec!\notes.txt: gzip compressed data, was "passwd", last modified: Fri Sep  4 23:29:29 2026, from Unix, original size modulo 2^32 2861
+00000000: 1f8b 0808 5954 9b6a 0003 7061 7373 7764  ....YT.j..passwd
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/os-lab5\]0;capziro@capziro-3:~/os-lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/os-lab5[01;32mcapziro@capziro-3[00m:[01;34m~/os-lab5[00m$ [7mfind / -xdev -perm -4000 -type f 2>/dev/null[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfind / -xdev -perm -4000 -type f 2>/dev/null
+[?2004l]133;C\]666;vte.shell.preexec!\/usr/bin/ntfs-3g
+/usr/bin/fusermount3
+/usr/bin/gpasswd
+/usr/bin/chsh
+/usr/bin/umount
+/usr/bin/su
+/

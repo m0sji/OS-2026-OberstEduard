@@ -1,0 +1,213 @@
+================================================================
+ Lab 7 - Three Small Programs (Linux) - session transcript
+ Oberst Eduard, FAF-243 - 19 October 2026
+ Ubuntu 26.04.1 LTS, Linux 7.0.0-31-generic, gcc 15.2.0
+ Working directory: ~/OS_26/lab7
+================================================================
+##### Part 0: environment
+$ gcc --version | head -1
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+$ uname -sr
+Linux 7.0.0-31-generic
+$ lsb_release -ds 2>/dev/null
+Ubuntu 26.04.1 LTS
+
+##### Part 1.2: run with ls -l
+$ gcc -Wall -Wextra -o run run.c && ./run
+parent: my PID is 130657
+child:  my PID is 130658, my parent is 130657
+total 112
+-rw-rw-r-- 1 capziro capziro   184 Oct 19 14:09 Makefile
+-rwxrwxr-x 1 capziro capziro 16296 Oct 19 14:09 pipeline
+-rw-rw-r-- 1 capziro capziro  1014 Oct 19 14:09 pipeline.c
+-rwxrwxr-x 1 capziro capziro 16296 Oct 19 14:09 pipeline3
+-rw-rw-r-- 1 capziro capziro  1440 Oct 19 14:09 pipeline3.c
+-rwxrwxr-x 1 capziro capziro 16336 Oct 19 14:09 redirect
+-rw-rw-r-- 1 capziro capziro   706 Oct 19 14:09 redirect.c
+-rwxrwxr-x 1 capziro capziro 16392 Oct 19 14:09 run
+-rw-rw-r-- 1 capziro capziro   912 Oct 19 14:09 run.c
+-rwxrwxr-x 1 capziro capziro 16432 Oct 19 14:09 zombie
+-rw-rw-r-- 1 capziro capziro   980 Oct 19 14:09 zombie.c
+parent: child 130658 ended with status 0
+
+##### Part 1.3: child becomes date
+19:        execlp("date", "date", (char *)NULL);    /* step 2: become date */
+$ gcc -Wall -Wextra -o run run.c \&\& ./run
+parent: my PID is 130679
+child:  my PID is 130680, my parent is 130679
+Mon Oct 19 02:09:33 PM EEST 2026
+parent: child 130680 ended with status 0
+
+##### Part 1.4: a program that does not exist
+19:        execlp("nosuchprog", "nosuchprog", (char *)NULL);
+$ gcc -Wall -Wextra -o run run.c \&\& ./run
+parent: my PID is 130688
+child:  my PID is 130689, my parent is 130688
+exec: No such file or directory
+parent: child 130689 ended with status 127
+exit code of ./run: 0
+
+##### restore run.c to the ls -l version
+19:        execlp("ls", "ls", "-l", (char *)NULL);  /* step 2: become ls */
+
+
+##### extra: what the two fflush(stdout) calls are for
+$ ./run | cat            # the real run.c, with fflush
+parent: my PID is 131230
+child:  my PID is 131233, my parent is 131230
+total 116
+
+$ ./run_noflush | cat    # the same program with both fflush lines removed
+total 116
+-rw-rw-r-- 1 capziro capziro   184 Oct 19 14:09 Makefile
+-rw-r--r-- 1 capziro capziro    58 Oct 19 14:10 err.txt
+-rw-r--r-- 1 capziro capziro     0 Oct 19 14:10 out.txt
+-rwxrwxr-x 1 capziro capziro 16296 Oct 19 14:11 pipeline
+
+$ ./run_noflush          # to a terminal it looks fine (stdout is line-buffered)
+parent: my PID is 131240
+child:  my PID is 131241, my parent is 131240
+total 116
+
+##### Part 2.2 / 2.3: the zombie (clean run)
+$ ./zombie > /dev/null &
+$ sleep 2; ps -o pid,ppid,stat,cmd
+    PID    PPID STAT CMD
+ 131086  131083 S    /bin/bash /tmp/claude-1000/-home-capziro-OS-26/d4d06a8a-b5d1-4f65-9d3d-9cc826dd6b39/scratchpad/part2c.sh
+ 131087  131086 S    ./zombie
+ 131089  131087 Z    [ls] <defunct>
+
+--- 20 s later, same command, same two PIDs ---
+$ ps -o pid,ppid,stat,cmd
+    PID    PPID STAT CMD
+ 131086  131083 S    /bin/bash /tmp/claude-1000/-home-capziro-OS-26/d4d06a8a-b5d1-4f65-9d3d-9cc826dd6b39/scratchpad/part2c.sh
+
+##### Part 2 extra: the kernel's own words, and who reaps an orphaned zombie
+##### extra: what the kernel calls it
+$ grep -E 'Name|State' /proc/130874/status
+Name:	ls
+State:	Z (zombie)
+$ cat /proc/130874/cmdline | wc -c    # a zombie has no address space left
+0
+
+##### Part 2.3: twenty seconds later
+$ ps -o pid,ppid,stat,cmd
+    PID    PPID STAT CMD
+(no ./zombie and no [ls] <defunct> line: the parent reached waitpid and exited)
+
+##### extra: kill the parent while it sleeps -- who reaps the zombie then?
+$ ps -o pid,ppid,stat,cmd -p 130961 130963
+    PID    PPID STAT CMD
+ 130961  130862 S    ./zombie
+ 130963  130961 Z    [ls] <defunct>
+$ kill -9 130961   # the parent dies without ever calling waitpid
+/tmp/claude-1000/-home-capziro-OS-26/d4d06a8a-b5d1-4f65-9d3d-9cc826dd6b39/scratchpad/part2b.sh: line 37: 130961 Killed                     ./zombie > /dev/null
+$ ps -o pid,ppid,stat,cmd -p 130961 130963
+    PID    PPID STAT CMD
+(neither process exists any more)
+
+##### Part 3.2: redirection
+$ gcc -Wall -Wextra -o redirect redirect.c && ./redirect
+open gave descriptor 1
+done: the listing is in out.txt
+$ head -3 out.txt
+total 112
+-rw-rw-r-- 1 capziro capziro   184 Oct 19 14:09 Makefile
+-rw-r--r-- 1 capziro capziro     0 Oct 19 14:09 out.txt
+$ wc -l out.txt
+13 out.txt
+
+##### Part 3 extra: proof that nothing reached the terminal
+$ ./redirect | cat     # the listing is not in the pipe either
+open gave descriptor 1
+done: the listing is in out.txt
+
+##### Part 3 extra: the descriptor table of the child, before exec
+$ ls -l /proc/self/fd
+total 0
+lr-x------ 1 capziro capziro 64 Oct 19 14:09 0 -> /dev/null
+l-wx------ 1 capziro capziro 64 Oct 19 14:09 1 -> pipe:[588193]
+l-wx------ 1 capziro capziro 64 Oct 19 14:09 2 -> pipe:[588193]
+lr-x------ 1 capziro capziro 64 Oct 19 14:09 3 -> /proc/130749/fd
+
+##### Part 3 extra A: the same program without close(1)
+$ gcc -Wall -Wextra -o rnc redirect_noclose.c && ./rnc
+open gave descriptor 3
+total 112
+-rw-rw-r-- 1 capziro capziro   184 Oct 19 14:09 Makefile
+-rw-r--r-- 1 capziro capziro     0 Oct 19 14:10 out.txt
+-rwxrwxr-x 1 capziro capziro 16296 Oct 19 14:09 pipeline
+-rw-rw-r-- 1 capziro capziro  1014 Oct 19 14:09 pipeline.c
+-rwxrwxr-x 1 capziro capziro 16296 Oct 19 14:09 pipeline3
+-rw-rw-r-- 1 capziro capziro  1440 Oct 19 14:09 pipeline3.c
+-rwxrwxr-x 1 capziro capziro 16336 Oct 19 14:09 redirect
+-rw-rw-r-- 1 capziro capziro   706 Oct 19 14:09 redirect.c
+-rwxrwxr-x 1 capziro capziro 16392 Oct 19 14:09 run
+-rw-rw-r-- 1 capziro capziro   912 Oct 19 14:09 run.c
+-rwxrwxr-x 1 capziro capziro 16432 Oct 19 14:09 zombie
+-rw-rw-r-- 1 capziro capziro   980 Oct 19 14:09 zombie.c
+done: the listing is in out.txt
+$ head -2 out.txt
+
+##### Part 3 extra B: close(2) instead, i.e. ls /nosuchdir 2> err.txt
+$ gcc -Wall -Wextra -o rerr redirect_err.c && ./rerr
+done: the error message is in err.txt
+$ cat err.txt
+ls: cannot access '/nosuchdir': No such file or directory
+
+##### Part 3 extra B (repeated with fflush): close(2), i.e. ls /nosuchdir 2> err.txt
+$ rm -f err.txt; gcc -Wall -Wextra -o rerr redirect_err.c && ./rerr
+open gave descriptor 2
+done: the error message is in err.txt
+$ cat err.txt
+ls: cannot access '/nosuchdir': No such file or directory
+
+##### Part 4.2: one pipe, two forks
+$ gcc -Wall -Wextra -o pipeline pipeline.c && ./pipeline
+247
+$ ls /etc | wc -l
+247
+
+##### Optional: three stages
+$ gcc -Wall -Wextra -o pipeline3 pipeline3.c && ./pipeline3
+243
+$ ls /usr/bin | grep x | wc -l
+243
+
+##### Part 4.3: the parent keeps the writing end open
+$ sed -n "32,35p" pipeline.c
+
+    close(p[0]);                                 /* the parent uses neither end */
+    /* close(p[1]); */
+    wait(NULL);
+$ gcc -Wall -Wextra -o pipeline pipeline.c
+$ ./pipeline        # it never ends; here stopped after 5 s instead of Ctrl-C
+exit status: 124 (124 = killed by timeout, i.e. it was still running)
+
+##### Part 4.3: which of the two children is still there?
+$ ./pipeline &  then  ps -o pid,ppid,stat,cmd
+    PID    PPID STAT CMD
+
+$ cat /proc/<wc>/wchan ; cat /proc/<wc>/stack-ish view
+pid 130991 -> wc
+   state: State:	S (sleeping)
+   wchan: anon_pipe_read
+$ kill -9 the whole thing (this is the Ctrl-C of the lab)
+(stopped)
+
+##### restore pipeline.c
+$ grep -n "close(p\[1\])" pipeline.c ; ./pipeline
+17:        close(p[1]);
+27:        close(p[1]);
+34:    close(p[1]);
+247
+
+##### Part 4.3 (clean): who survives the hang
+$ ps -o pid,ppid,stat,cmd   (parent + every child it still has)
+    PID    PPID STAT CMD
+ 131122  131120 S    /tmp/claude-1000/-home-capziro-OS-26/d4d06a8a-b5d1-4f65-9d3d-9cc826dd6b39/scratchpad/pipeline_broken
+ 131125  131122 S    wc -l
+
+$ for each surviving child: comm, state, wchan
+pid 131125  comm=wc  state=S  wchan=anon_pipe_read
+(ls is gone: it finished writing, exited, and the first wait(NULL) reaped it)
