@@ -4,7 +4,6 @@
 #include <sys/wait.h>
 
 /* does the same as the shell command:   ls /etc | wc -l   */
-
 int main(void)
 {
     int p[2];

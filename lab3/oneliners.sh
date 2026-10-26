@@ -20,7 +20,7 @@ grep -w FAIL access.log | tail -3 | cut -d' ' -f2,3
 cut -d: -f7 /etc/passwd | sort | uniq -c | sort -rn
 
 # Q8. Why do ls /etc | wc -l and ls -l /etc | wc -l differ by exactly one?
-echo "ls: $(ls /etc | wc -l)  ls -l: $(ls -l /etc | wc -l)  extra line: $(ls -l /etc | head -1)"
+echo "ls: $(ls /etc | wc -l)  ls -l: $(ls -l /etc | wc -l)  first line of ls -l: $(ls -l /etc | head -1)"
 
-# Bonus. Failed requests whose minute ends in 0 (10:00, 10:10, ...), and how many
-grep -E ' 10:[0-5]0 user[0-9]+ FAIL ' access.log ; grep -cE ' 10:[0-5]0 user[0-9]+ FAIL ' access.log
+# Bonus. Failed requests whose minute ends in 0, and how many
+grep -E ' 10:[0-5]0 user[0-9]+ FAIL ' access.log | head -3 ; grep -cE ' 10:[0-5]0 user[0-9]+ FAIL ' access.log

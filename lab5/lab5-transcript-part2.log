@@ -1,0 +1,46 @@
+Script started on 2026-10-26 01:56:02+02:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="80" LINES="24"]
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab5\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ [7mlsblk -e7[27mlsblk -e7
+[?2004l]133;C\]666;vte.shell.preexec!\NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 953.9G  0 disk 
+├─nvme0n1p1 259:1    0   100M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    16M  0 part 
+├─nvme0n1p3 259:3    0 487.4G  0 part 
+├─nvme0n1p4 259:4    0   887M  0 part 
+└─nvme0n1p5 259:5    0 464.7G  0 part /
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab5\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ [7mlsblk -o NAME,SIZE,FSTYPE,MOUNTPO[27m[7mI[27m[7mNTS -e7[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINTS -e7
+[?2004l]133;C\]666;vte.shell.preexec!\NAME          SIZE FSTYPE MOUNTPOINTS
+nvme0n1     953.9G        
+├─nvme0n1p1   100M vfat   /boot/efi
+├─nvme0n1p2    16M        
+├─nvme0n1p3 487.4G ntfs   
+├─nvme0n1p4   887M ntfs   
+└─nvme0n1p5 464.7G ext4   /
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab5\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ [7mdf -h /[27mdf -h /
+[?2004l]133;C\]666;vte.shell.preexec!\Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p5  457G   43G  391G  10% /
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab5\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ [7mmount | grep " / "[27mmount | grep " / "
+[?2004l]133;C\]666;vte.shell.preexec!\/dev/nvme0n1p5 on[01;31m[K / [m[Ktype ext4 (rw,relatime)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab5\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ [7mfind / -xdev -perm -4000 -type f [27m[7m2[27m[7m>/dev/null[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ find / -xdev -perm -4000 -type f 2>/dev/null
+[?2004l]133;C\]666;vte.shell.preexec!\/usr/bin/ntfs-3g
+/usr/bin/fusermount3
+/usr/bin/gpasswd
+/usr/bin/chsh
+/usr/bin/umount
+/usr/bin/su
+/usr/bin/pkexec
+/usr/bin/chfn
+/usr/bin/newgidmap
+/usr/bin/newuidmap
+/usr/bin/passwd
+/usr/bin/mount
+/usr/bin/sudo.ws
+/usr/sbin/pppd
+/usr/lib/openssh/ssh-keysign
+/usr/lib/claude-desktop/chrome-sandbox
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/cargo/bin/su
+/usr/lib/cargo/bin/sudo
+]666;vte.shell.postexec=1\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab5\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab5\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab5[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab5[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-10-26 01:56:46+02:00 [COMMAND_EXIT_CODE="1"]

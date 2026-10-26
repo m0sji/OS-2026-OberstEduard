@@ -22,7 +22,7 @@ int main(void)
     }
 
     int status;
-    sleep(20);                                   /* the new line */
+    sleep(20);
     waitpid(pid, &status, 0);                    /* step 3: wait for the child */
     printf("parent: child %d ended with status %d\n", pid, WEXITSTATUS(status));
     return 0;

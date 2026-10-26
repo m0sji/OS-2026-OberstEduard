@@ -37,8 +37,9 @@ QEMU emulates the RISC-V hardware on which xv6 runs.
 
 The checked-out xv6 revision is 06aad25. In this revision the tick-delay
 system call is named pause(), declared in user/user.h and implemented by
-sys_pause() in kernel/sysproc.c. user/sleep.c uses a small sleep() wrapper
-that calls pause(ticks), preserving the lab program name and behavior.
+sys_pause() in kernel/sysproc.c. user/sleep.c calls pause(atoi(argv[1]))
+directly (my first version used a small sleep() wrapper around pause();
+it was simplified to the direct call in Lab 4).
 The Makefile UPROGS list includes $U/_sleep so the program enters fs.img.
 
 ## Verification

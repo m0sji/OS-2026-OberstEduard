@@ -2,7 +2,6 @@
 #include "user/user.h"
 
 // the three steps of the shell, inside xv6:  echo hello from the child
-
 int
 main(int argc, char *argv[])
 {
