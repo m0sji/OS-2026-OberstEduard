@@ -1,0 +1,163 @@
+Script started on 2026-11-02 15:51:14+02:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -V[27mstrace -V
+[?2004l]133;C\]666;vte.shell.preexec!\strace -- version 6.19
+Copyright (c) 1991-2026 The strace developers <https://strace.io>.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Optional features enabled: stack-trace=libunwind stack-demangle m32-mpers mx32-mpers
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -f -e trace=openat,read,wr[27m[7mi[27m[7mte,close ls -l[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ strace -f -e trace=openat,read,write,close ls -l
+[?2004l]133;C\]666;vte.shell.preexec!\[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/etc/ld.so.cache"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/lib/x86_64-linux-gnu/libselinux.so.1"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"[0m...[35m[0m, [35m832[0m)[0m [0m=[0m[0m [32m832[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/lib/x86_64-linux-gnu/libgcc_s.so.1"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"[0m...[35m[0m, [35m832[0m)[0m [0m=[0m[0m [32m832[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/lib/x86_64-linux-gnu/libm.so.6"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"[0m...[35m[0m, [35m832[0m)[0m [0m=[0m[0m [32m832[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/lib/x86_64-linux-gnu/libc.so.6"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \250\2\0\0\0\0\0"[0m...[35m[0m, [35m832[0m)[0m [0m=[0m[0m [32m832[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"[0m...[35m[0m, [35m832[0m)[0m [0m=[0m[0m [32m832[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/proc/filesystems"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"nodev\tsysfs\nnodev\ttmpfs\nnodev\tpr"[0m...[35m[0m, [35m1024[0m)[0m [0m=[0m[0m [32m369[0m[0m
+[33mread[0m([35m3[0m[0m, [35m""[0m, [35m1024[0m)[0m                       [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/proc/self/maps"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"5bc35ed12000-5bc35ee04000 r--p 0"[0m...[35m[0m, [35m1024[0m)[0m [0m=[0m[0m [32m1024[0m[0m
+[33mread[0m([35m3[0m[0m, [35m":05 8390194                   /u"[0m...[35m[0m, [35m1024[0m)[0m [0m=[0m[0m [32m1024[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"3:05 8390197                   /"[0m...[35m[0m, [35m1024[0m)[0m [0m=[0m[0m [32m1024[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"        /usr/lib/x86_64-linux-gn"[0m...[35m[0m, [35m1024[0m)[0m [0m=[0m[0m [32m1024[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"90189                   /usr/lib"[0m...[35m[0m, [35m1024[0m)[0m [0m=[0m[0m [32m645[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/coreutils/locales/uucore/en-US.ftl"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"# Common strings shared across a"[0m...[35m[0m, [35m4080[0m)[0m [0m=[0m[0m [32m4080[0m[0m
+[33mread[0m([35m3[0m[0m, [35m""[0m, [35m32[0m)[0m                         [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/coreutils/locales/ls/en-US.ftl"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m-1[0m [31mENOENT[0m [31m(No such file or directory)[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"."[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/etc/nsswitch.conf"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mread[0m([35m4[0m[0m, [35m"# /etc/nsswitch.conf\n#\n# Example"[0m...[35m[0m, [35m4096[0m)[0m [0m=[0m[0m [32m594[0m[0m
+[33mread[0m([35m4[0m[0m, [35m""[0m, [35m4096[0m)[0m                       [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/etc/passwd"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mread[0m([35m4[0m[0m, [35m"root:x:0:0:root:/root:/bin/bash\n"[0m...[35m[0m, [35m4096[0m)[0m [0m=[0m[0m [32m2861[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/etc/group"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mread[0m([35m4[0m[0m, [35m"root:x:0:\ndaemon:x:1:\nbin:x:2:\ns"[0m...[35m[0m, [35m4096[0m)[0m [0m=[0m[0m [32m1170[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/America"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/America/Argentina"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/America/Kentucky"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/America/Indiana"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/America/North_Dakota"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Indian"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Arctic"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Australia"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Africa"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Etc"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Europe"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Antarctica"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Asia"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Atlantic"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Pacific"[0m, [35m[34mO_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/share/zoneinfo/Europe/Chisinau"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m4[0m[0m
+[33mread[0m([35m4[0m[0m, [35m"TZif2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\20\0\0\0\20\0\0\0\0"[0m...[35m[0m, [35m2424[0m)[0m [0m=[0m[0m [32m2424[0m[0m
+[33mread[0m([35m4[0m[0m, [35m""[0m, [35m32[0m)[0m                         [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m4[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mwrite[0m([35m1[0m, [35m"total 12\n-rw-rw-r-- 1 capziro ca"[0m...[35m[0m, [35m191[0mtotal 12
+-rw-rw-r-- 1 capziro capziro 4096 Nov  2 15:51 lab9-transcript.log
+-rw-rw-r-- 1 capziro capziro 3811 Nov  2 15:50 report.md
+-rw-rw-r-- 1 capziro capziro 1043 Nov  2 15:49 syscalls.c
+[0m)[0m [0m=[0m[0m [32m191[0m[0m
++++ exited with 0 +++[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mcat syscalls.c[27mcat syscalls.c
+[?2004l]133;C\]666;vte.shell.preexec!\/* syscalls.c - open, write, read and close, using only system calls.
+ * Build: gcc -Wall -Wextra -o syscalls syscalls.c
+ * Run:   ./syscalls
+ * See the calls: strace ./syscalls
+ */
+#include <fcntl.h>   /* open */
+#include <unistd.h>  /* write, read, close */
+#include <string.h>  /* strlen */
+#include <stdio.h>   /* printf */
+
+int main(void) {
+    const char *msg = "hello, kernel\n";
+
+    /* open() is a system call: ask the kernel for a file, get back a descriptor */
+    int fd = open("note.txt", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+    if (fd < 0) { perror("open"); return 1; }
+    printf("open returned descriptor %d\n", fd);
+
+    /* write() is a system call: hand the bytes to the kernel */
+    ssize_t n = write(fd, msg, strlen(msg));
+    printf("write sent %zd bytes\n", n);
+    close(fd);
+
+    /* read it back, through the kernel again */
+    fd = open("note.txt", O_RDONLY);
+    char buf[64];
+    n = read(fd, buf, sizeof(buf) - 1);
+    buf[n] = '\0';
+    printf("read got %zd bytes: %s", n, buf);
+    close(fd);
+
+    return 0;
+}
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mgcc -Wall -Wextra -o syscalls sys[27m[7mc[27m[7malls.c [27m
+[7m./syscalls[27m[A[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ gcc -Wall -Wextra -o syscalls syscalls.c
+./syscalls
+[?2004l]133;C\]666;vte.shell.preexec!\]133;C\]666;vte.shell.preexec!\open returned descriptor 3
+write sent 14 bytes
+read got 14 bytes: hello, kernel
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -e trace=openat,write,read[27m[7m,[27m[7mclose ./syscalls[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ strace -e trace=openat,write,read,close ./syscalls
+[?2004l]133;C\]666;vte.shell.preexec!\[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/etc/ld.so.cache"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"/usr/lib/x86_64-linux-gnu/libc.so.6"[0m, [35m[34mO_RDONLY|O_CLOEXEC[35m[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \250\2\0\0\0\0\0"[0m...[35m[0m, [35m832[0m)[0m [0m=[0m[0m [32m832[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"note.txt"[0m, [35m[34mO_WRONLY|O_CREAT|O_TRUNC[35m[0m, [35m0644[0m[0m)[0m [0m=[0m[0m [32m3[0m[0m
+[33mwrite[0m([35m1[0m, [35m"open returned descriptor 3\n"[0m, [35m27[0mopen returned descriptor 3
+[0m)[0m [0m=[0m[0m [32m27[0m[0m
+[33mwrite[0m([35m3[0m, [35m"hello, kernel\n"[0m, [35m14[0m[0m)[0m         [0m=[0m[0m [32m14[0m[0m
+[33mwrite[0m([35m1[0m, [35m"write sent 14 bytes\n"[0m, [35m20[0mwrite sent 14 bytes
+[0m)[0m   [0m=[0m[0m [32m20[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
+[33mopenat[0m([35m[34mAT_FDCWD[35m[0m, [35m"note.txt"[0m, [35m[34mO_RDONLY[35m[0m[0m)[0m  [0m=[0m[0m [32m3[0m[0m
+[33mread[0m([35m3[0m[0m, [35m"hello, kernel\n"[0m, [35m63[0m)[0m          [0m=[0m[0m [32m14[0m[0m
+[33mwrite[0m([35m1[0m, [35m"read got 14 bytes: hello, kernel"[0m...[35m[0m, [35m33[0mread got 14 bytes: hello, kernel
+[0m)[0m [0m=[0m[0m [32m33[0m[0m
+[33mclose[0m([35m3[0m[0m)[0m                                [0m=[0m[0m [32m0[0m[0m
++++ exited with 0 +++[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-11-02 15:55:12+02:00 [COMMAND_EXIT_CODE="0"]
