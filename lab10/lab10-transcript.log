@@ -1,0 +1,449 @@
+Script started on 2026-11-02 16:48:07+02:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="80" LINES="24"]
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mnano kernel/syscall.h[27mnano kernel/syscall.h
+[?2004l]133;C\]666;vte.shell.preexec!\[?2004h[?1049h[22;0;0t[1;24r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[22;34H(B[0;7m[ Reading... ](B[m[22;32H(B[0;7m[ Read 23 lines ](B[m[H(B[0;7m  GNU nano 8.7.1                   kernel/syscall.h                             [1;79H(B[m[23d(B[0;7m^G(B[m Help[14G(B[0;7m^O(B[m Write Out (B[0;7m^F(B[m Where Is  (B[0;7m^K(B[m Cut[53G(B[0;7m^T(B[m Execute   (B[0;7m^C(B[m Location[24d(B[0;7m^X(B[m Exit[14G(B[0;7m^R(B[m Read File (B[0;7m^\(B[m Replace   (B[0;7m^U(B[m Paste     (B[0;7m^J(B[m Justify   (B[0;7m^/(B[m Go To Line[2d(B[0;1m[34m// System call numbers[3d[36m#define[39m(B[m SYS_fork   1[4d(B[0;1m[36m#define[39m(B[m SYS_exit   2[5d(B[0;1m[36m#define[39m(B[m SYS_wait   3[6d(B[0;1m[36m#define[39m(B[m SYS_pipe   4[7d(B[0;1m[36m#define[39m(B[m SYS_read   5[8d(B[0;1m[36m#define[39m(B[m SYS_kill   6[9d(B[0;1m[36m#define[39m(B[m SYS_exec   7[10d(B[0;1m[36m#define[39m(B[m SYS_fstat  8[11d(B[0;1m[36m#define[39m(B[m SYS_chdir  9[12d(B[0;1m[36m#define[39m(B[m SYS_dup    10[13d(B[0;1m[36m#define[39m(B[m SYS_getpid 11[14d(B[0;1m[36m#define[39m(B[m SYS_sbrk   12[15d(B[0;1m[36m#define[39m(B[m SYS_pause  13[16d(B[0;1m[36m#define[39m(B[m SYS_uptime 14[17d(B[0;1m[36m#define[39m(B[m SYS_open   15[18d(B[0;1m[36m#define[39m(B[m SYS_write  16[19d(B[0;1m[36m#define[39m(B[m SYS_mknod  17[20d(B[0;1m[36m#define[39m(B[m SYS_unlink 18[21d(B[0;1m[36m#define[39m(B[m SYS_link   19[2d[?12l[?25h[24;1H[?1049l[23;0;0t[?1l>[?1049h[22;0;0t[1;45r[?12l[?25h[39;49m]104(B[m[4l[?7h[H[2J[?2004h[?1h=[?1h=(B[0;7m  GNU nano 8.7.1                         kernel/syscall.h                                  [1;90H(B[m[2d(B[0;1m[34m// System call numbers[3d[36m#define[39m(B[m SYS_fork   1[4d(B[0;1m[36m#define[39m(B[m SYS_exit   2[5d(B[0;1m[36m#define[39m(B[m SYS_wait   3[6d(B[0;1m[36m#define[39m(B[m SYS_pipe   4[7d(B[0;1m[36m#define[39m(B[m SYS_read   5[8d(B[0;1m[36m#define[39m(B[m SYS_kill   6[9d(B[0;1m[36m#define[39m(B[m SYS_exec   7[10d(B[0;1m[36m#define[39m(B[m SYS_fstat  8[11d(B[0;1m[36m#define[39m(B[m SYS_chdir  9[12d(B[0;1m[36m#define[39m(B[m SYS_dup    10[13d(B[0;1m[36m#define[39m(B[m SYS_getpid 11[14d(B[0;1m[36m#define[39m(B[m SYS_sbrk   12[15d(B[0;1m[36m#define[39m(B[m SYS_pause  13[16d(B[0;1m[36m#define[39m(B[m SYS_uptime 14[17d(B[0;1m[36m#define[39m(B[m SYS_open   15[18d(B[0;1m[36m#define[39m(B[m SYS_write  16[19d(B[0;1m[36m#define[39m(B[m SYS_mknod  17[20d(B[0;1m[36m#define[39m(B[m SYS_unlink 18[21d(B[0;1m[36m#define[39m(B[m SYS_link   19[22d(B[0;1m[36m#define[39m(B[m SYS_mkdir  20[23d(B[0;1m[36m#define[39m(B[m SYS_close  21[24d(B[0;1m[36m#define[39m(B[m SYS_sync   22[44d(B[0;7m^G(B[m Help[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut[44;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45d(B[0;7m^X(B[m Exit[45;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[?25l[?12l[?25h[2d[?25l[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[?12l[?25h[5d[?25l[?12l[?25h[C[?25l[?12l[?25h[6d[?25l[?12l[?25h[7d[?25l[?12l[?25h[8d[?25l[?12l[?25h[9d[?25l[?12l[?25h[C[?25l[?12l[?25h[10d[?25l[?12l[?25h[C[?25l[?12l[?25h[11d[?25l[?12l[?25h[12d[?25l[?12l[?25h[13d[?25l[?12l[?25h[14d[?25l[?12l[?25h[15d[?25l[?12l[?25h[16d[?25l[?12l[?25h[17d[?25l[43d[?12l[?25h[18;4H[?25l[?12l[?25h[19d[?25l[?12l[?25h[20d[?25l[?12l[?25h[21d[?25l[?12l[?25h[22d[?25l[?12l[?25h[23d[?25l[?12l[?25h[24d[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h [?25l[?12l[?25hS[?25l[?12l[?25hY[?25l[?12l[?25hS[?25l[?12l[?25h_[?25l[?12l[?25hs[?25l[?12l[?25hy[?25l[?12l[?25hn[?25l[?12l[?25hc[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h2[?25l[?12l[?25h2[?25l[1;59H(B[0;7m*[90G(B[m[25d[?12l[?25h[?25l[?12l[?25h(B[0;1m[36m#[39m(B[m[?25l[?12l[?25h#d[?25l[?12l[?25he[?25l[?12l[?25hf[?25l[?12l[?25hi[?25l[?12l[?25h [?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25h(B[0;1m[36m#define[39m(B[m[?25l[?12l[?25h[42m [49m(B[m[?25l[?12l[?25h (B[0;1m[31mS[39m(B[m[?25l[?12l[?25h(B[0;1m[31mY[39m(B[m[?25l[?12l[?25h(B[0;1m[31mS[39m(B[m[?25l[?12l[?25h(B[0;1m[31m_[39m(B[m[?25l[?12l[?25hSYS_t[?25l[?12l[?25hr[?25l[?12l[?25ha[?25l[?12l[?25hc[?25l[?12l[?25he[?25l[?12l[?25h[42m [49m(B[m[?25l[?12l[?25h 2[?25l[?12l[?25h3[?25l[44;16H   (B[0;7mM-D(B[m DOS Format    (B[0;7mM-A(B[m Append        (B[0;7mM-B(B[m Backup File   (B[0;7m^T(B[m Browse[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-M(B[m Mac Format    (B[0;7mM-P(B[m Prepend       (B[0;7m^Q(B[m Discard buffer[K[44;82H[A(B[0;7mWrite to File: kernel/syscall.h                                                            [43;32H(B[m[?12l[?25h[?25l[38G[1K (B[0;7m[ Writing... ](B[m[K[1;59H(B[0;7m [90G(B[m[43;37H(B[0;7m[ Wrote 24 lines ](B[m[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[?12l[?25h[25;21H[?25l[43d[J[45d[?12l[?25h[45;1H[?1049l[23;0;0t[?1l>[?2004l]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mnano user/user.h[27mnano user/user.h
+[?2004l]133;C\]666;vte.shell.preexec!\[?2004h[?1049h[22;0;0t[1;45r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[43;39H(B[0;7m[ Reading... ](B[m[43;38H(B[0;7m[ Read 50 lines ](B[m[H(B[0;7m  GNU nano 8.7.1                           user/user.h                                     [1;90H(B[m[44d(B[0;7m^G(B[m Help[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut[44;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45d(B[0;7m^X(B[m Exit[45;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[2d(B[0;1m[36m#define[39m(B[m (B[0;1m[31mSBRK_ERROR[39m(B[m (([32mchar[39m(B[m *)-1)[4d[32mstruct[39m(B[m stat;[6d(B[0;1m[34m// system calls[7d(B[0m[32mint[39m(B[m fork([32mvoid[39m(B[m);[8d[32mint[39m(B[m exit([32mint[39m(B[m) [36m__attribute__((noreturn))[39m(B[m;[9d[32mint[39m(B[m wait([32mint[39m(B[m *);[10d[32mint[39m(B[m pipe([32mint[39m(B[m *);[11d[32mint[39m(B[m write([32mint[39m(B[m, [32mconst[39m(B[m [32mvoid[39m(B[m *, [32mint[39m(B[m);[12d[32mint[39m(B[m read([32mint[39m(B[m, [32mvoid[39m(B[m *, [32mint[39m(B[m);[13d[32mint[39m(B[m close([32mint[39m(B[m);[14d[32mint[39m(B[m kill([32mint[39m(B[m);[15d[32mint[39m(B[m exec([32mconst[39m(B[m [32mchar[39m(B[m *, [32mchar[39m(B[m **);[16d[32mint[39m(B[m open([32mconst[39m(B[m [32mchar[39m(B[m *, [32mint[39m(B[m);[17d[32mint[39m(B[m mknod([32mconst[39m(B[m [32mchar[39m(B[m *, [32mshort[39m(B[m, [32mshort[39m(B[m);[18d[32mint[39m(B[m unlink([32mconst[39m(B[m [32mchar[39m(B[m *);[19d[32mint[39m(B[m fstat([32mint[39m(B[m fd, [32mstruct[39m(B[m stat *);[20d[32mint[39m(B[m link([32mconst[39m(B[m [32mchar[39m(B[m *, [32mconst[39m(B[m [32mchar[39m(B[m *);[21d[32mint[39m(B[m mkdir([32mconst[39m(B[m [32mchar[39m(B[m *);[22d[32mint[39m(B[m chdir([32mconst[39m(B[m [32mchar[39m(B[m *);[23d[32mint[39m(B[m dup([32mint[39m(B[m);[24d[32mint[39m(B[m getpid([32mvoid[39m(B[m);[25d[32mchar[39m(B[m *sys_sbrk([32mint[39m(B[m, [32mint[39m(B[m);[26d[32mint[39m(B[m pause([32mint[39m(B[m);[27d[32mint[39m(B[m uptime([32mvoid[39m(B[m);[28d[32mint[39m(B[m sync([32mvoid[39m(B[m);[30d(B[0;1m[34m// ulib.c[31d(B[0m[32mint[39m(B[m stat([32mconst[39m(B[m [32mchar[39m(B[m *, [32mstruct[39m(B[m stat *);[32d[32mchar[39m(B[m *strcpy([32mchar[39m(B[m *, [32mconst[39m(B[m [32mchar[39m(B[m *);[33d[32mvoid[39m(B[m *memmove([32mvoid[39m(B[m *, [32mconst[39m(B[m [32mvoid[39m(B[m *, [32mint[39m(B[m);[34d[32mchar[39m(B[m *strchr([32mconst[39m(B[m [32mchar[39m(B[m *, [32mchar[39m(B[m c);[35d[32mint[39m(B[m strcmp([32mconst[39m(B[m [32mchar[39m(B[m *, [32mconst[39m(B[m [32mchar[39m(B[m *);[36d[32mchar[39m(B[m *gets([32mchar[39m(B[m *, [32mint[39m(B[m max);[37duint strlen([32mconst[39m(B[m [32mchar[39m(B[m *);[38d[32mvoid[39m(B[m *memset([32mvoid[39m(B[m *, [32mint[39m(B[m, uint);[39d[32mint[39m(B[m atoi([32mconst[39m(B[m [32mchar[39m(B[m *);[40d[32mint[39m(B[m memcmp([32mconst[39m(B[m [32mvoid[39m(B[m *, [32mconst[39m(B[m [32mvoid[39m(B[m *, uint);[41d[32mvoid[39m(B[m *memcpy([32mvoid[39m(B[m *, [32mconst[39m(B[m [32mvoid[39m(B[m *, uint);[42d[32mchar[39m(B[m *sbrk([32mint[39m(B[m);[2d[?12l[?25h[?25l[44;16H   (B[0;7mM-C(B[m Case Sens     (B[0;7mM-B(B[m Backwards     (B[0;7m^P(B[m Older          (B[0;7m^T(B[m Go To Line[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-R(B[m Reg.exp.      (B[0;7m^R(B[m Replace        (B[0;7m^N(B[m Newer[K[44;86H[A(B[0;7mSearch:                                                                                    [43;9H(B[m[?12l[?25h[?25l(B[0;7ms(B[m[?12l[?25h[?25l(B[0;7my(B[m[?12l[?25h[?25l(B[0;7mn(B[m[?12l[?25h[?25l(B[0;7mc(B[m[?12l[?25h[?25l(B[0;7m((B[m[?12l[?25h[?25l(B[0;7mv(B[m[?12l[?25h[?25l(B[0;7mo(B[m[?12l[?25h[?25l(B[0;7mi(B[m[?12l[?25h[?25l(B[0;7md(B[m[?12l[?25h[?25l(B[0;7m)(B[m[?12l[?25h[?25l[K[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[28;5H[30m[103msync(void)[5G[39;49m(B[m[?12l[?25hsync([32mvoid[39m(B[m)[5G[?25l[?12l[?25h[28;16H[?25l[1;56H(B[0;7m*[90G(B[m[29;42r[29;1HM[1;45r[29;1H[?12l[?25h[?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25h[32mint[39m(B[m[?25l[?12l[?25h[42m [49m(B[m[?25l[?12l[?25h t[?25l[?12l[?25hr[?25l[?12l[?25ha[?25l[?12l[?25hc[?25l[?12l[?25he[?25l[?12l[?25h([?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25h[32mint[39m(B[m[?25l[?12l[?25h)[?25l[?12l[?25h;[?25l[44;16H   (B[0;7mM-D(B[m DOS Format    (B[0;7mM-A(B[m Append        (B[0;7mM-B(B[m Backup File   (B[0;7m^T(B[m Browse[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-M(B[m Mac Format    (B[0;7mM-P(B[m Prepend       (B[0;7m^Q(B[m Discard buffer[K[44;82H[A(B[0;7mWrite to File: user/user.h                                                                 [43;27H(B[m[?12l[?25h[?25l[43;38H[1K (B[0;7m[ Writing... ](B[m[K[1;56H(B[0;7m [90G(B[m[43;37H(B[0;7m[ Wrote 51 lines ](B[m[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[?12l[?25h[29;16H[?25l[43d[J[45d[?12l[?25h[45;1H[?1049l[23;0;0t[?1l>[?2004l]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mnano user/usys.pl[27mnano user/usys.pl
+[?2004l]133;C\]666;vte.shell.preexec!\[?2004h[?1049h[22;0;0t[1;45r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[43;39H(B[0;7m[ Reading... ](B[m[43;38H(B[0;7m[ Read 45 lines ](B[m[H(B[0;7m  GNU nano 8.7.1                           user/usys.pl                                    [1;90H(B[m[44d(B[0;7m^G(B[m Help[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut[44;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45d(B[0;7m^X(B[m Exit[45;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[2d[32m#!/usr/bin/perl -w[4d# Generate usys.S, the stubs for syscalls.[6d[31mprint[39m(B[m [33m"# generated by usys.pl - do not edit\n"[39m(B[m;[8d[31mprint[39m(B[m [33m"#include \"kernel/syscall.h\"\n"[39m(B[m;[10d[35msub[39m(B[m entry {[11;5H[35mmy[39m(B[m [36m$prefix[39m(B[m = [33m"sys_"[39m(B[m;[12;5H[35mmy[39m(B[m [36m$name[39m(B[m = [31mshift[39m(B[m;[13;5H[35mif[39m(B[m ([36m$name[39m(B[m [35meq[39m(B[m [33m"sbrk"[39m(B[m) {[14;9H[31mprint[39m(B[m [33m".global $prefix$name\n"[39m(B[m;[15;9H[31mprint[39m(B[m [33m"$prefix$name:\n"[39m(B[m;[16;5H} [35melse[39m(B[m {[17;9H[31mprint[39m(B[m [33m".global $name\n"[39m(B[m;[18;9H[31mprint[39m(B[m [33m"$name:\n"[39m(B[m;[19;5H}[20d[31mprint[39m(B[m [33m" li a7, SYS_${name}\n"[39m(B[m;[21;5H[31mprint[39m(B[m [33m" ecall\n"[39m(B[m;[22;5H[31mprint[39m(B[m [33m" ret\n"[39m(B[m;[23d}[25dentry([33m"fork"[39m(B[m);[26dentry([33m"exit"[39m(B[m);[27dentry([33m"wait"[39m(B[m);[28dentry([33m"pipe"[39m(B[m);[29dentry([33m"read"[39m(B[m);[30dentry([33m"write"[39m(B[m);[31dentry([33m"close"[39m(B[m);[32dentry([33m"kill"[39m(B[m);[33dentry([33m"exec"[39m(B[m);[34dentry([33m"open"[39m(B[m);[35dentry([33m"mknod"[39m(B[m);[36dentry([33m"unlink"[39m(B[m);[37dentry([33m"fstat"[39m(B[m);[38dentry([33m"link"[39m(B[m);[39dentry([33m"mkdir"[39m(B[m);[40dentry([33m"chdir"[39m(B[m);[41dentry([33m"dup"[39m(B[m);[42dentry([33m"getpid"[39m(B[m);[2d[?12l[?25h[?25l[44;16H   (B[0;7mM-C(B[m Case Sens     (B[0;7mM-B(B[m Backwards     (B[0;7m^P(B[m Older          (B[0;7m^T(B[m Go To Line[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-R(B[m Reg.exp.      (B[0;7m^R(B[m Replace        (B[0;7m^N(B[m Newer[K[44;86H[A(B[0;7mSearch:                                                                                    [43;9H(B[m[?12l[?25h[?25l(B[0;7me(B[m[?12l[?25h[?25l(B[0;7mn(B[m[?12l[?25h[?25l(B[0;7mt(B[m[?12l[?25h[?25l(B[0;7mr(B[m[?12l[?25h[?25l(B[0;7my(B[m[?12l[?25h[?25l(B[0;7m((B[m[?12l[?25h[?25l(B[0;7m"(B[m[?12l[?25h[?25l(B[0;7ms(B[m[?12l[?25h[?25l(B[0;7my(B[m[?12l[?25h[?25l(B[0;7mn(B[m[?12l[?25h[?25l(B[0;7mc(B[m[?12l[?25h[?25l(B[0;7m"(B[m[?12l[?25h[?25l(B[0;7m)(B[m[?12l[?25h[?25l[K[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[2dentry([33m"exit"[39m(B[m);[K[3dentry([33m"wait"[39m(B[m);[4dentry([33m"pipe"[39m(B[m);[K[5dentry([33m"read"[39m(B[m);[6dentry([33m"write"[39m(B[m);[K[7dentry([33m"close"[39m(B[m);[8dentry([33m"kill"[39m(B[m);[K[9dentry([33m"exec"[39m(B[m);[10dentry([33m"open"[39m(B[m);[11dentry([33m"mknod"[39m(B[m);[K[12dentry([33m"unlink"[39m(B[m);[K[13dentry([33m"fstat"[39m(B[m);[K[14dentry([33m"link"[39m(B[m);[K[15dentry([33m"mkdir"[39m(B[m);[K[16dentry([33m"chdir"[39m(B[m);[17dentry([33m"dup"[39m(B[m);[K[18dentry([33m"getpid"[39m(B[m);[K[19dentry([33m"sbrk"[39m(B[m);[20dentry([33m"pause"[39m(B[m);[K[21dentry([33m"uptime"[39m(B[m);[K[22d[30m[103mentry("sync")[39;49m(B[m;[K[23d[K[25d[K[26d[K[27d[K[28d[K[29d[K[30d[K[31d[K[32d[K[33d[K[34d[K[35d[K[36d[K[37d[K[38d[K[39d[K[40d[K[41d[K[42d[K[22d[?12l[?25hentry([33m"sync"[39m(B[m)[?25l[?12l[?25h[22;15H[?25l[1;57H(B[0;7m*[90G(B[m[23d[?12l[?25h[?25l[?12l[?25he[?25l[?12l[?25hn[?25l[?12l[?25ht[?25l[?12l[?25hr[?25l[?12l[?25hy[?25l[?12l[?25h([?25l[?12l[?25h"[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hc[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[31mtr[39m(B[m[?25l[?12l[?25htre[?25l[43d[?12l[?25h[23;8H[31mtr[39m(B[m[K[?25l[?12l[?25htrc[?25l[?12l[?25ha[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[31mtr[39m(B[m[K[?25l[?12l[?25htra[?25l[?12l[?25hc[?25l[?12l[?25he[?25l[?12l[?25h[7G[33m"trace"[39m(B[m[?25l[?12l[?25h)[?25l[?12l[?25h;[?25l[44;16H   (B[0;7mM-D(B[m DOS Format    (B[0;7mM-A(B[m Append        (B[0;7mM-B(B[m Backup File   (B[0;7m^T(B[m Browse[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-M(B[m Mac Format    (B[0;7mM-P(B[m Prepend       (B[0;7m^Q(B[m Discard buffer[K[44;82H[A(B[0;7mWrite to File: user/usys.pl                                                                [43;28H(B[m[?12l[?25h[?25l[43;38H[1K (B[0;7m[ Writing... ](B[m[K[1;57H(B[0;7m [90G(B[m[43;37H(B[0;7m[ Wrote 46 lines ](B[m[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[?12l[?25h[23;16H[?25l[43d[J[45d[?12l[?25h[45;1H[?1049l[23;0;0t[?1l>[?2004l]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mnano user/trace.c[27mnano user/trace.c
+[?2004l]133;C\]666;vte.shell.preexec!\[?2004h[?1049h[22;0;0t[1;45r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[43;40H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 8.7.1                           user/trace.c                                    [1;90H(B[m[44d(B[0;7m^G(B[m Help[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut[44;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45d(B[0;7m^X(B[m Exit[45;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[2d[?12l[?25h[?25l[1;57H(B[0;7m*[43d(B[m[K[1;90H[2d(B[0;1m[36m#include[39m(B[m (B[0;1m[33m"kernel/types.h"[3d[36m#include[39m(B[m (B[0;1m[33m"kernel/stat.h"[4d[36m#include[39m(B[m (B[0;1m[33m"user/user.h"[6d(B[0m[32mint[7d[39m(B[mmain([32mint[39m(B[m argc, [32mchar[39m(B[m *argv[])[8d{[9d (B[0;1m[33mif[39m(B[m (argc < 3) {[10;5Hfprintf(2, (B[0;1m[33m"usage: trace mask command [args...]\n"[39m(B[m);[11;5Hexit(1);[12;3H}[13d(B[0;1m[33mif[39m(B[m (trace(atoi(argv[1])) < 0) {[14;5Hfprintf(2, (B[0;1m[33m"trace: failed\n"[39m(B[m);[15;5Hexit(1);[16;3H}[17dexec(argv[2], argv + 2);[18;3Hfprintf(2, (B[0;1m[33m"trace: exec %s failed\n"[39m(B[m, argv[2]);[19;3Hexit(1);[20d}[?12l[?25h[?25l[44;16H   (B[0;7mM-D(B[m DOS Format    (B[0;7mM-A(B[m Append        (B[0;7mM-B(B[m Backup File   (B[0;7m^T(B[m Browse[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-M(B[m Mac Format    (B[0;7mM-P(B[m Prepend       (B[0;7m^Q(B[m Discard buffer[K[44;82H[A(B[0;7mWrite to File: user/trace.c                                                                [43;28H(B[m[?12l[?25h[?25l[43;38H[1K (B[0;7m[ Writing... ](B[m[K[1;57H(B[0;7m [90G(B[m[43;37H(B[0;7m[ Wrote 19 lines ](B[m[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[?12l[?25h[20d}[?25l[43d[J[45d[?12l[?25h[45;1H[?1049l[23;0;0t[?1l>[?2004l]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mnano Makefile[27mnano Makefile
+[?2004l]133;C\]666;vte.shell.preexec!\[?2004h[?1049h[22;0;0t[1;45r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[43;39H(B[0;7m[ Reading... ](B[m[43;37H(B[0;7m[ Read 210 lines ](B[m[H(B[0;7m  GNU nano 8.7.1                             Makefile                                      [1;90H(B[m[44d(B[0;7m^G(B[m Help[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut[44;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45d(B[0;7m^X(B[m Exit[45;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[2dK=kernel[3dU=user[5dOBJS[31m = [39m(B[m\[6;3H$K/entry.o \[7;3H$K/start.o \[8;3H$K/console.o \[9;3H$K/printk.o \[10;3H$K/uart.o \[11;3H$K/kalloc.o \[12;3H$K/spinlock.o \[13;3H$K/string.o \[14;3H$K/main.o \[15;3H$K/vm.o \[16;3H$K/proc.o \[17;3H$K/swtch.o \[18;3H$K/trampoline.o \[19;3H$K/trap.o \[20;3H$K/syscall.o \[21;3H$K/sysproc.o \[22;3H$K/bio.o \[23;3H$K/fs.o \[24;3H$K/log.o \[25;3H$K/sleeplock.o \[26;3H$K/file.o \[27;3H$K/pipe.o \[28;3H$K/exec.o \[29;3H$K/sysfile.o \[30;3H$K/kernelvec.o \[31;3H$K/plic.o \[32;3H$K/virtio_disk.o[34d[32m# riscv64-unknown-elf- or riscv64-linux-gnu-[35d# perhaps in /opt/riscv/bin[36d#TOOLPREFIX =[39m[42m [38d[49m[32m# Try to infer the correct TOOLPREFIX if not set[39d[35mifndef[39m(B[m TOOLPREFIX[40d(B[0;1m[34mTOOLPREFIX :(B[0m[31m= [39m(B[m$(shell if riscv64-unknown-elf-objdump -i 2>&1 | grep 'elf64-big' >/dev/null(B[0;7m>[41;9H(B[mthen echo 'riscv64-unknown-elf-'; \[42;9Helif riscv64-elf-objdump -i 2>&1 | grep 'elf64-big' >/dev/null 2>&1; \[2d[?12l[?25h[?25l[44;16H   (B[0;7mM-C(B[m Case Sens     (B[0;7mM-B(B[m Backwards     (B[0;7m^P(B[m Older          (B[0;7m^T(B[m Go To Line[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-R(B[m Reg.exp.      (B[0;7m^R(B[m Replace        (B[0;7m^N(B[m Newer[K[44;86H[A(B[0;7mSearch:                                                                                    [43;9H(B[m[?12l[?25h[?25l(B[0;7m_(B[m[?12l[?25h[?25l(B[0;7mz(B[m[?12l[?25h[?25l(B[0;7mo(B[m[?12l[?25h[?25l(B[0;7mm(B[m[?12l[?25h[?25l(B[0;7mb(B[m[?12l[?25h[?25l(B[0;7mi(B[m[?12l[?25h[?25l(B[0;7me(B[m[?12l[?25h[?25l[K[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[2d[32m# details:[3d# http://www.gnu.org/software/make/manual/html_node/Chained-Rules.html[4d(B[0;1m[34m.PRECIOUS:[39m(B[m %.o[5d[K[6dUPROGS=\[K[7d[1K $U/_cat\[8;8H[1K $U/_echo\[9;8H[1K $U/_forktest\[10;8H[1K $U/_grep\[11;8H[1K $U/_init\[12;8H[1K $U/_kill[13;8H[1K $U/_ln[14;8H[1K $U/_ls\[15;8H[1K $U/_mkdir\[16;8H[1K $U/_rm\[17;8H[1K $U/_sh\[18;8H[1K $U/_stressfs\[19;8H[1K $U/_usertests\[20;8H[1K $U/_grind\[21;8H[1K $U/_wc\[K[22;8H[1K $U/[30m[103m_zombie[39;49m(B[m\[23;8H[1K $U/_logstress\[24;8H[1K $U/_forphan\[25;8H[1K $U/_dorphan\[26;8H[1K $U/_sync\[27;8H[1K $U/_sleep\[28;8H[1K $U/_args\[29;8H[1K $U/_mystat\[30;8H[1K $U/_find\[K[31;8H[1K $U/_run\[32;8H[1K $U/_pingpong\[34d(B[0;1m[34mfs.img:[39m(B[m mkfs/mkfs README [34m$(UPROGS)[39m(B[m[K[35;8H[1K mkfs/mkfs fs.img README [34m$(UPROGS)[36d[39m(B[m[K[37d[35m-include[39m(B[m kernel/*.d user/*.d[38d[K[39d(B[0;1m[34mclean:(B[0m[42m [49m(B[m[K[40d[1K rm -f *.tex *.dvi *.idx *.aux *.log *.ind *.ilg \[K[41;9H*/*.o */*.d */*.asm */*.sym \[K[42;9H$K/kernel fs.img \[K[22;12H[?12l[?25h_zombie\[22;12H[?25l[?12l[?25h[22;20H[?25l[1;55H(B[0;7m*[90G(B[m[23;42r[23;1HM[1;45r[23;1H[?12l[?25h[?25l[?12l[?25h[8G[42m[1K [49m(B[m[?25l[?12l[?25h[1K $[?25l[?12l[?25hU[?25l[?12l[?25h/[?25l[?12l[?25h_[?25l[?12l[?25ht[?25l[?12l[?25hr[?25l[?12l[?25ha[?25l[?12l[?25hc[?25l[?12l[?25he[?25l[?12l[?25h\[?25l[44;16H   (B[0;7mM-D(B[m DOS Format    (B[0;7mM-A(B[m Append        (B[0;7mM-B(B[m Backup File   (B[0;7m^T(B[m Browse[K[45;2H(B[0;7mC(B[m Cancel[16G   (B[0;7mM-M(B[m Mac Format    (B[0;7mM-P(B[m Prepend       (B[0;7m^Q(B[m Discard buffer[K[44;82H[A(B[0;7mWrite to File: Makefile                                                                    [43;24H(B[m[?12l[?25h[?25l[43;38H[1K (B[0;7m[ Writing... ](B[m[K[1;55H(B[0;7m [90G(B[m[43;37H(B[0;7m[ Wrote 211 lines ](B[m[44;16H(B[0;7m^O(B[m Write Out   (B[0;7m^F(B[m Where Is    (B[0;7m^K(B[m Cut         (B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location[45;2H(B[0;7mX(B[m Exit  [16G(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste       (B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line[?12l[?25h[23;19H[?25l[43d[J[45d[?12l[?25h[45;1H[?1049l[23;0;0t[?1l>[?2004l]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mmake qemu[27mmake qemu
+[?2004l]133;C\]666;vte.shell.preexec!\riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/syscall.o kernel/syscall.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T kernel/kernel.ld -o kernel/kernel kernel/entry.o kernel/start.o kernel/console.o kernel/printk.o kernel/uart.o kernel/kalloc.o kernel/spinlock.o kernel/string.o kernel/main.o kernel/vm.o kernel/proc.o kernel/swtch.o kernel/trampoline.o kernel/trap.o kernel/syscall.o kernel/sysproc.o kernel/bio.o kernel/fs.o kernel/log.o kernel/sleeplock.o kernel/file.o kernel/pipe.o kernel/exec.o kernel/sysfile.o kernel/kernelvec.o kernel/plic.o kernel/virtio_disk.o 
+/usr/bin/riscv64-linux-gnu-ld.bfd: warning: kernel/kernel has a LOAD segment with RWX permissions
+riscv64-linux-gnu-objdump -S kernel/kernel > kernel/kernel.asm
+riscv64-linux-gnu-objdump -t kernel/kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kernel/kernel.sym
+gcc -Wno-unknown-attributes -I. -o mkfs/mkfs mkfs/mkfs.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ulib.o user/ulib.c
+perl user/usys.pl > user/usys.S
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie -c -o user/usys.o user/usys.S
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/printf.o user/printf.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/umalloc.o user/umalloc.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/cat.o user/cat.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_cat user/cat.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_cat > user/cat.asm
+riscv64-linux-gnu-objdump -t user/_cat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/cat.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/echo.o user/echo.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_echo user/echo.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_echo > user/echo.asm
+riscv64-linux-gnu-objdump -t user/_echo | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/echo.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/forktest.o user/forktest.c
+# forktest has less library code linked in - needs to be small
+# in order to be able to max out the proc table.
+riscv64-linux-gnu-ld -z max-page-size=4096 -N -e main -Ttext 0 -o user/_forktest user/forktest.o user/ulib.o user/usys.o
+/usr/bin/riscv64-linux-gnu-ld.bfd: warning: user/_forktest has a LOAD segment with RWX permissions
+riscv64-linux-gnu-objdump -S user/_forktest > user/forktest.asm
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/grep.o user/grep.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_grep user/grep.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_grep > user/grep.asm
+riscv64-linux-gnu-objdump -t user/_grep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/grep.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/init.o user/init.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_init user/init.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_init > user/init.asm
+riscv64-linux-gnu-objdump -t user/_init | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/init.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/kill.o user/kill.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_kill user/kill.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_kill > user/kill.asm
+riscv64-linux-gnu-objdump -t user/_kill | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/kill.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ln.o user/ln.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_ln user/ln.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_ln > user/ln.asm
+riscv64-linux-gnu-objdump -t user/_ln | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/ln.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/ls.o user/ls.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_ls user/ls.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_ls > user/ls.asm
+riscv64-linux-gnu-objdump -t user/_ls | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/ls.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/mkdir.o user/mkdir.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_mkdir user/mkdir.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_mkdir > user/mkdir.asm
+riscv64-linux-gnu-objdump -t user/_mkdir | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/mkdir.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/rm.o user/rm.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_rm user/rm.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_rm > user/rm.asm
+riscv64-linux-gnu-objdump -t user/_rm | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/rm.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/sh.o user/sh.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_sh user/sh.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_sh > user/sh.asm
+riscv64-linux-gnu-objdump -t user/_sh | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/sh.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/stressfs.o user/stressfs.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_stressfs user/stressfs.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_stressfs > user/stressfs.asm
+riscv64-linux-gnu-objdump -t user/_stressfs | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/stressfs.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/usertests.o user/usertests.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_usertests user/usertests.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_usertests > user/usertests.asm
+riscv64-linux-gnu-objdump -t user/_usertests | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/usertests.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/grind.o user/grind.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_grind user/grind.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_grind > user/grind.asm
+riscv64-linux-gnu-objdump -t user/_grind | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/grind.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/wc.o user/wc.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_wc user/wc.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_wc > user/wc.asm
+riscv64-linux-gnu-objdump -t user/_wc | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/wc.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/zombie.o user/zombie.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_zombie user/zombie.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_zombie > user/zombie.asm
+riscv64-linux-gnu-objdump -t user/_zombie | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/zombie.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/trace.o user/trace.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_trace user/trace.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_trace > user/trace.asm
+riscv64-linux-gnu-objdump -t user/_trace | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/trace.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/logstress.o user/logstress.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_logstress user/logstress.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_logstress > user/logstress.asm
+riscv64-linux-gnu-objdump -t user/_logstress | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/logstress.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/forphan.o user/forphan.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_forphan user/forphan.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_forphan > user/forphan.asm
+riscv64-linux-gnu-objdump -t user/_forphan | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/forphan.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/dorphan.o user/dorphan.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_dorphan user/dorphan.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_dorphan > user/dorphan.asm
+riscv64-linux-gnu-objdump -t user/_dorphan | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/dorphan.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/sync.o user/sync.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_sync user/sync.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_sync > user/sync.asm
+riscv64-linux-gnu-objdump -t user/_sync | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/sync.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/sleep.o user/sleep.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_sleep user/sleep.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_sleep > user/sleep.asm
+riscv64-linux-gnu-objdump -t user/_sleep | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/sleep.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/args.o user/args.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_args user/args.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_args > user/args.asm
+riscv64-linux-gnu-objdump -t user/_args | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/args.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/mystat.o user/mystat.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_mystat user/mystat.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_mystat > user/mystat.asm
+riscv64-linux-gnu-objdump -t user/_mystat | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/mystat.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/find.o user/find.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_find user/find.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_find > user/find.asm
+riscv64-linux-gnu-objdump -t user/_find | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/find.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/run.o user/run.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_run user/run.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_run > user/run.asm
+riscv64-linux-gnu-objdump -t user/_run | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/run.sym
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o user/pingpong.o user/pingpong.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_pingpong user/pingpong.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+riscv64-linux-gnu-objdump -S user/_pingpong > user/pingpong.asm
+riscv64-linux-gnu-objdump -t user/_pingpong | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > user/pingpong.sym
+mkfs/mkfs fs.img README user/_cat user/_echo user/_forktest user/_grep user/_init user/_kill user/_ln user/_ls user/_mkdir user/_rm user/_sh user/_stressfs user/_usertests user/_grind user/_wc user/_zombie user/_trace user/_logstress user/_forphan user/_dorphan user/_sync user/_sleep user/_args user/_mystat user/_find user/_run user/_pingpong 
+nmeta 47 (boot, super, log blocks 31, inode blocks 13, bitmap blocks 1) blocks 1953 total 2000
+balloc: first 1245 blocks have been allocated
+balloc: write bitmap block at sector 46
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$ trace 32 grep hello README
+3 trace: unknown sys call 23
+trace: failed
+$ QEMU: Terminated
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [K]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [K]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mpython3 - <<'PY'[27m
+[7mp = "kernel/proc.h"[27m
+[7mlines = open(p).read().splitlines(keepends=True)[27m
+[7mout = [][27m
+[7mfor line in lines:[27m
+[7m    out.append(line)[27m
+[7m    if "char name[16]" in line:[27m
+[7m        out.append("  int trace_mask;               // new: which calls to print\n")[27m
+[7mopen(p, "w").writelines(out)[27m
+[7mprint("OK proc.h")[27m
+[7mPY[27m[A[A[A[A[A[A[A[A[A[A]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ python3 - <<'PY'
+p = "kernel/proc.h"
+lines = open(p).read().splitlines(keepends=True)
+out = []
+for line in lines:
+    out.append(line)
+    if "char name[16]" in line:
+        out.append("  int trace_mask;               // new: which calls to print\n")
+open(p, "w").writelines(out)
+print("OK proc.h")
+PY
+[?2004l]133;C\]666;vte.shell.preexec!\OK proc.h
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mgrep -A1 "name\[16\]" kernel/proc.h[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep -A1 "name\[16\]" kernel/proc.h
+[?2004l]133;C\]666;vte.shell.preexec!\  char [01;31m[Kname[16][m[K;               // Process name (debugging)
+  int trace_mask;               // new: which calls to print
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mcat >> kernel/sysproc.c <<'EOF'[27m
+
+[7muint64[27m
+[7msys_trace(void)[27m
+[7m{[27m
+[7m  int mask;[27m
+[7m  argint(0, &mask);[27m
+[7m  myproc()->trace_mask = mask;[27m
+[7m  return 0;[27m
+[7m}[27m
+[7mEOF[27m[A[A[A[A[A[A[A[A[A[A]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ cat >> kernel/sysproc.c <<'EOF'
+
+uint64
+sys_trace(void)
+{
+  int mask;
+  argint(0, &mask);
+  myproc()->trace_mask = mask;
+  return 0;
+}
+EOF
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mtail -8 kernel/sysproc.c[27mtail -8 kernel/sysproc.c
+[?2004l]133;C\]666;vte.shell.preexec!\uint64
+sys_trace(void)
+{
+  int mask;
+  argint(0, &mask);
+  myproc()->trace_mask = mask;
+  return 0;
+}
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mpython3 - <<'PY'[27m
+[7mp = "kernel/syscall.c"[27m
+[7mlines = open(p).read().splitlines(keepends=True)[27m
+[7mout = [][27m
+[7mfor line in lines:[27m
+[7m    out.append(line)[27m
+[7m    if "extern uint64 sys_sync(void);" in line:[27m
+[7m        out.append("extern uint64 sys_trace(void); // new\n")[27m
+[7m    if "[SYS_sync]" in line and "sys_sync" in line:[27m
+[7m        out.append("  [SYS_trace]   = sys_trace,    // new\n")[27m
+[7mopen(p, "w").writelines(out)[27m
+[7mprint("OK syscall.c table")[27m
+[7mPY[27m[A[A[A[A[A[A[A[A[A[A[A[A]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ python3 - <<'PY'
+p = "kernel/syscall.c"
+lines = open(p).read().splitlines(keepends=True)
+out = []
+for line in lines:
+    out.append(line)
+    if "extern uint64 sys_sync(void);" in line:
+        out.append("extern uint64 sys_trace(void); // new\n")
+    if "[SYS_sync]" in line and "sys_sync" in line:
+        out.append("  [SYS_trace]   = sys_trace,    // new\n")
+open(p, "w").writelines(out)
+print("OK syscall.c table")
+PY
+[?2004l]133;C\]666;vte.shell.preexec!\OK syscall.c table
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mgrep -n "sys_trace" kernel/syscall.c[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep -n "sys_trace" kernel/syscall.c
+[?2004l]133;C\]666;vte.shell.preexec!\[32m[K106[m[K[36m[K:[m[Kextern uint64 [01;31m[Ksys_trace[m[K(void); // new
+[32m[K134[m[K[36m[K:[m[K  [SYS_trace]   = [01;31m[Ksys_trace[m[K,    // new
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mpython3 - <<'PY'[27m
+[7mp = "kernel/syscall.c"[27m
+[7mlines = open(p).read().splitlines(keepends=True)[27m
+
+[7m# a) tabelul de nume, chiar deasupra functiei syscall()[27m
+[7midx = next(i for i,l in enumerate(lines) if l.strip() == "syscall(void)")[27m
+[7minsert_at = idx-1 if lines[idx-1].strip() == "void" else idx[27m
+[7mblock = '''static char *syscallnames[] = {[27m
+[7m  [SYS_fork]   "fork",   [SYS_exit]   "exit",   [SYS_wait]  "wait",[27m
+[7m  [SYS_pipe]   "pipe",   [SYS_read]   "read",   [SYS_kill]  "kill",[27m
+[7m  [SYS_exec]   "exec",   [SYS_fstat]  "fstat",  [SYS_chdir] "chdir",[27m
+[7m  [SYS_dup]    "dup",    [SYS_getpid] "getpid", [SYS_sbrk]  "sbrk",[27m
+[7m  [SYS_pause]  "pause",  [SYS_uptime] "uptime", [SYS_open]  "open",[27m
+[7m  [SYS_write]  "write",  [SYS_mknod]  "mknod",  [SYS_unlink]"unlink",[27m
+[7m  [SYS_link]   "link",   [SYS_mkdir]  "mkdir",  [SYS_close] "close",[27m
+[7m  [SYS_sync]   "sync",   [SYS_trace]  "trace",[27m
+[7m};[27m
+
+[7m'''[27m
+[7mlines[insert_at:insert_at] = [block][27m
+
+[7m# b) printul, dupa linia care apeleaza syscall-ul[27m
+[7mout = [][27m
+[7mfor line in lines:[27m
+[7m    out.append(line)[27m
+[7m    if "p->trapframe->a0 = syscalls[num]();" in line:[27m
+[7m        out.append("    if ((p->trace_mask >> num) & 1) // new\n")[27m
+[7m        out.append('      printk("%d: syscall %s -> %ld\\n", // new\n')[27m
+[7m        out.append("             p->pid, syscallnames[num], p->trapframe->a0);\n")[27m
+
+[7mopen(p, "w").writelines(out)[27m
+[7mprint("OK syscall.c names+print")[27m
+[7mPY[27m[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ python3 - <<'PY'
+p = "kernel/syscall.c"
+lines = open(p).read().splitlines(keepends=True)
+
+# a) tabelul de nume, chiar deasupra functiei syscall()
+idx = next(i for i,l in enumerate(lines) if l.strip() == "syscall(void)")
+insert_at = idx-1 if lines[idx-1].strip() == "void" else idx
+block = '''static char *syscallnames[] = {
+  [SYS_fork]   "fork",   [SYS_exit]   "exit",   [SYS_wait]  "wait",
+  [SYS_pipe]   "pipe",   [SYS_read]   "read",   [SYS_kill]  "kill",
+  [SYS_exec]   "exec",   [SYS_fstat]  "fstat",  [SYS_chdir] "chdir",
+  [SYS_dup]    "dup",    [SYS_getpid] "getpid", [SYS_sbrk]  "sbrk",
+  [SYS_pause]  "pause",  [SYS_uptime] "uptime", [SYS_open]  "open",
+  [SYS_write]  "write",  [SYS_mknod]  "mknod",  [SYS_unlink]"unlink",
+  [SYS_link]   "link",   [SYS_mkdir]  "mkdir",  [SYS_close] "close",
+  [SYS_sync]   "sync",   [SYS_trace]  "trace",
+};
+
+'''
+lines[insert_at:insert_at] = [block]
+
+# b) printul, dupa linia care apeleaza syscall-ul
+out = []
+for line in lines:
+    out.append(line)
+    if "p->trapframe->a0 = syscalls[num]();" in line:
+        out.append("    if ((p->trace_mask >> num) & 1) // new\n")
+        out.append('      printk("%d: syscall %s -> %ld\\n", // new\n')
+        out.append("             p->pid, syscallnames[num], p->trapframe->a0);\n")
+
+open(p, "w").writelines(out)
+print("OK syscall.c names+print")
+PY
+[?2004l]133;C\]666;vte.shell.preexec!\OK syscall.c names+print
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mgrep -n "syscallnames\|trace_mask" kernel/syscall.c[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep -n "syscallnames\|trace_mask" kernel/syscall.c
+[?2004l]133;C\]666;vte.shell.preexec!\[32m[K138[m[K[36m[K:[m[Kstatic char *[01;31m[Ksyscallnames[m[K[] = {
+[32m[K160[m[K[36m[K:[m[K    if ((p->[01;31m[Ktrace_mask[m[K >> num) & 1) // new
+[32m[K162[m[K[36m[K:[m[K             p->pid, [01;31m[Ksyscallnames[m[K[num], p->trapframe->a0);
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mpython3 - <<'PY'[27m
+[7mp = "kernel/proc.c"[27m
+[7mlines = open(p).read().splitlines(keepends=True)[27m
+[7mout = [][27m
+[7mfor line in lines:[27m
+[7m    out.append(line)[27m
+[7m    if "safestrcpy(np->name, p->name, sizeof(p->name));" in line:[27m
+[7m        out.append("  np->trace_mask = p->trace_mask; // new\n")[27m
+[7mopen(p, "w").writelines(out)[27m
+[7mprint("OK proc.c")[27m
+[7mPY[27m[A[A[A[A[A[A[A[A[A[A]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ python3 - <<'PY'
+p = "kernel/proc.c"
+lines = open(p).read().splitlines(keepends=True)
+out = []
+for line in lines:
+    out.append(line)
+    if "safestrcpy(np->name, p->name, sizeof(p->name));" in line:
+        out.append("  np->trace_mask = p->trace_mask; // new\n")
+open(p, "w").writelines(out)
+print("OK proc.c")
+PY
+[?2004l]133;C\]666;vte.shell.preexec!\OK proc.c
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mgrep -n "trace_mask" kernel/proc.c[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep -n "trace_mask" kernel/proc.c
+[?2004l]133;C\]666;vte.shell.preexec!\[32m[K291[m[K[36m[K:[m[K  np->[01;31m[Ktrace_mask[m[K = p->[01;31m[Ktrace_mask[m[K; // new
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mmake qemu[27mmake qemu
+[?2004l]133;C\]666;vte.shell.preexec!\riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/console.o kernel/console.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/printk.o kernel/printk.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/uart.o kernel/uart.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/spinlock.o kernel/spinlock.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/vm.o kernel/vm.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/proc.o kernel/proc.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/trap.o kernel/trap.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/syscall.o kernel/syscall.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/sysproc.o kernel/sysproc.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/fs.o kernel/fs.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/sleeplock.o kernel/sleeplock.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/file.o kernel/file.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/pipe.o kernel/pipe.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/exec.o kernel/exec.c
+riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie   -c -o kernel/sysfile.o kernel/sysfile.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T kernel/kernel.ld -o kernel/kernel kernel/entry.o kernel/start.o kernel/console.o kernel/printk.o kernel/uart.o kernel/kalloc.o kernel/spinlock.o kernel/string.o kernel/main.o kernel/vm.o kernel/proc.o kernel/swtch.o kernel/trampoline.o kernel/trap.o kernel/syscall.o kernel/sysproc.o kernel/bio.o kernel/fs.o kernel/log.o kernel/sleeplock.o kernel/file.o kernel/pipe.o kernel/exec.o kernel/sysfile.o kernel/kernelvec.o kernel/plic.o kernel/virtio_disk.o 
+/usr/bin/riscv64-linux-gnu-ld.bfd: warning: kernel/kernel has a LOAD segment with RWX permissions
+riscv64-linux-gnu-objdump -S kernel/kernel > kernel/kernel.asm
+riscv64-linux-gnu-objdump -t kernel/kernel | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$/d' > kernel/kernel.sym
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 1 starting
+hart 2 starting
+init: starting sh
+$ trace 32 grep hello README
+3: syscall read -> 1023
+3: syscall read -> 965
+3: syscall read -> 453
+3: syscall read -> 0
+$ QEMU: Terminated
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [K]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [K]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ [7mmake qemu[27mmake qemu
+[?2004l]133;C\]666;vte.shell.preexec!\qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$ trace 2147483647 grep hello README
+3: syscall trace -> 0
+3: syscall exec -> 3
+3: syscall open -> 3
+3: syscall read -> 1023
+3: syscall read -> 965
+3: syscall read -> 453
+3: syscall read -> 0
+3: syscall close -> 0
+$ [3~trace 2 usertests forkforkfork
+exec [3~trace failed
+$ trace 2 usertests forkforkfork
+usertests starting
+test forkforkfork: 5: syscall fork -> 6
+6: syscall fork -> 7
+7: syscall fork -> 8
+7: syscall fork -> 9
+7: syscall fork -> 10
+8: syscall fork -> 11
+8: syscall fork -> 12
+7: syscall fork -> 13
+8: syscall fork -> 14
+7: syscall fork -> 15
+8: syscall fork -> 16
+7: syscall fork -> 17
+8: syscall fork -> 18
+7: syscall fork -> 19
+8: syscall fork -> 20
+8: syscall fork -> 21
+7: syscall fork -> 22
+8: syscall fork -> 23
+7: syscall fork -> 24
+8: syscall fork -> 25
+7: syscall fork -> 26
+8: syscall fork -> 27
+7: syscall fork -> 28
+7: syscall fork -> 29
+8: syscall fork -> 30
+7: syscall fork -> 31
+7: syscall fork -> 32
+8: syscall fork -> 33
+7: syscall fork -> 34
+8: syscall fork -> 35
+7: syscall fork -> 36
+7: syscall fork -> 37
+8: syscall fork -> 38
+7: syscall fork -> 39
+8: syscall fork -> 40
+7: syscall fork -> 41
+8: syscall fork -> 42
+7: syscall fork -> 43
+8: syscall fork -> 44
+7: syscall fork -> 45
+7: syscall fork -> 46
+7: syscall fork -> 47
+8: syscall fork -> 48
+8: syscall fork -> 49
+8: syscall fork -> 50
+7: syscall fork -> 51
+8: syscall fork -> 52
+8: syscall fork -> 53
+7: syscall fork -> 54
+8: syscall fork -> 55
+7: syscall fork -> 56
+8: syscall fork -> 57
+7: syscall fork -> 58
+8: syscall fork -> 59
+7: syscall fork -> 60
+7: syscall fork -> 61
+8: syscall fork -> 62
+7: syscall fork -> 63
+9: syscall fork -> 64
+7: syscall fork -> 65
+8: syscall fork -> 66
+8: syscall fork -> -1
+7: syscall fork -> -1
+OK
+ALL TESTS PASSED
+$ trace 65536 echo hi
+hi67: syscall write -> 2
+
+67: syscall write -> 1
+$ QEMU: Terminated
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/xv6-riscv\]0;capziro@capziro-3:~/xv6-riscv\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/xv6-riscv[01;32mcapziro@capziro-3[00m:[01;34m~/xv6-riscv[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-11-02 17:06:55+02:00 [COMMAND_EXIT_CODE="0"]
