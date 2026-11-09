@@ -1,0 +1,146 @@
+Script started on 2026-11-09 15:23:10+02:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="101" LINES="47"]
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mgcc -Wall -Wextra -o syscalls syscalls.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -Wextra -o syscalls syscalls.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7m./syscalls[27m./syscalls
+[?2004l]133;C\]666;vte.shell.preexec!\open returned descriptor 3
+write sent 14 bytes
+read got 14 bytes: hello, kernel
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -c ls -l > /dev/null[27mstrace -c ls -l > /dev/null
+[?2004l]133;C\]666;vte.shell.preexec!\% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ------------------
+ 29.15    0.000839         839         1           execve
+ 18.14    0.000522          19        27           mmap
+  8.20    0.000236           6        34           getdents64
+  7.33    0.000211          26         8           mprotect
+  6.95    0.000200           6        31         1 openat
+  5.77    0.000166           8        20           read
+  4.13    0.000119           3        34           close
+  2.81    0.000081           2        29           fstat
+  2.54    0.000073           5        14           statx
+  1.88    0.000054          27         2           munmap
+  1.25    0.000036           5         7           lseek
+  1.11    0.000032          10         3           sigaltstack
+  1.04    0.000030           2        14           listxattr
+  1.01    0.000029           4         6           brk
+  0.83    0.000024           2         9           rt_sigaction
+  0.76    0.000022           5         4         4 connect
+  0.73    0.000021          10         2         2 statfs
+  0.69    0.000020          10         2         2 access
+  0.63    0.000018           3         6         4 ioctl
+  0.56    0.000016           8         2           pread64
+  0.56    0.000016           4         4           socket
+  0.56    0.000016          16         1           set_tid_address
+  0.42    0.000012           4         3           fcntl
+  0.38    0.000011           2         4           newfstatat
+  0.35    0.000010           5         2           prlimit64
+  0.31    0.000009           9         1           poll
+  0.31    0.000009           9         1           rseq
+  0.28    0.000008           8         1           arch_prctl
+  0.24    0.000007           7         1           set_robust_list
+  0.21    0.000006           6         1           sched_getaffinity
+  0.21    0.000006           6         1           getrandom
+  0.17    0.000005           5         1           write
+  0.17    0.000005           5         1           readlink
+  0.17    0.000005           5         1           prctl
+  0.14    0.000004           4         1           gettid
+------ ----------- ----------- --------- --------- ------------------
+100.00    0.002878          10       279        13 total
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -c -e trace=write ls -l[27mstrace -c -e trace=write ls -l
+[?2004l]133;C\]666;vte.shell.preexec!\total 1200
+-rw-rw-r-- 1 capziro capziro 1169147 Nov  2 16:17 Lab9_OberstEduard_FAF-243.pdf
+-rw-rw-r-- 1 capziro capziro   19273 Nov  2 15:55 lab9-transcript.log
+-rw-rw-r-- 1 capziro capziro    4096 Nov  9 15:23 lab9.log
+-rw-r--r-- 1 capziro capziro      14 Nov  9 15:23 note.txt
+-rw-rw-r-- 1 capziro capziro    4874 Nov  2 15:58 report.md
+-rwxrwxr-x 1 capziro capziro   16264 Nov  9 15:23 syscalls
+-rw-rw-r-- 1 capziro capziro    1043 Nov  2 15:49 syscalls.c
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00    0.000000           0         1           write
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000000           0         1           total
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mcat > count.c << 'EOF'[27m
+[7m/* count.c - prints N lines with printf; strace counts how many write() calls that costs.[27m
+[7m * Build: gcc -Wall -Wextra -o count count.c[27m
+[7m * Run:   strace -c -e trace=write ./count 20             (to the terminal)[27m
+[7m *        strace -c -e trace=write ./count 20 > out.txt   (to a file)[27m
+[7m */[27m
+[7m#include <stdio.h>[27m
+[7m#include <stdlib.h>[27m
+
+[7mint main(int argc, char *argv[]) {[27m
+[7m    int n = (argc > 1) ? atoi(argv[1]) : 20;[27m
+[7m    for (int i = 1; i <= n; i++)[27m
+[7m        printf("line %d\n", i);       /* printf is a library function, not a system call */[27m
+[7m    return 0;[27m
+[7m}[27m
+[7mEOF[27m
+[7mgcc -Wall -Wextra -o count count.c[27m[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ cat > count.c << 'EOF'
+/* count.c - prints N lines with printf; strace counts how many write() calls that costs.
+ * Build: gcc -Wall -Wextra -o count count.c
+ * Run:   strace -c -e trace=write ./count 20             (to the terminal)
+ *        strace -c -e trace=write ./count 20 > out.txt   (to a file)
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+    int n = (argc > 1) ? atoi(argv[1]) : 20;
+    for (int i = 1; i <= n; i++)
+        printf("line %d\n", i);       /* printf is a library function, not a system call */
+    return 0;
+}
+EOF
+gcc -Wall -Wextra -o count count.c
+[?2004l]133;C\]666;vte.shell.preexec!\]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -c -e trace=write ./count 20[27mstrace -c -e trace=write ./count 20
+[?2004l]133;C\]666;vte.shell.preexec!\line 1
+line 2
+line 3
+line 4
+line 5
+line 6
+line 7
+line 8
+line 9
+line 10
+line 11
+line 12
+line 13
+line 14
+line 15
+line 16
+line 17
+line 18
+line 19
+line 20
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000225          11        20           write
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000225          11        20           total
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -c -e trace=write ./count 20 > out.txt[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cstrace -c -e trace=write ./count 20 > out.txt
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00    0.000000           0         1           write
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000000           0         1           total
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mcat out.txt | head -3[27mcat out.txt | head -3
+[?2004l]133;C\]666;vte.shell.preexec!\line 1
+line 2
+line 3
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mstrace -e trace=write ./count 1000 > out.txt[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cstrace -e trace=write ./count 1000 > out.txt
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\[33mwrite[0m([35m1[0m, [35m"line 1\nline 2\nline 3\nline 4\nline"[0m...[35m[0m, [35m4096[0m[0m)[0m [0m=[0m[0m [32m4096[0m[0m
+[33mwrite[0m([35m1[0m, [35m"ine 468\nline 469\nline 470\nline 4"[0m...[35m[0m, [35m4096[0m[0m)[0m [0m=[0m[0m [32m4096[0m[0m
+[33mwrite[0m([35m1[0m, [35m"ne 923\nline 924\nline 925\nline 92"[0m...[35m[0m, [35m701[0m[0m)[0m [0m=[0m[0m [32m701[0m[0m
++++ exited with 0 +++[0m
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ [7mwc -c out.txt[27mwc -c out.txt
+[?2004l]133;C\]666;vte.shell.preexec!\8893 out.txt
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab9\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab9\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab9[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab9[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-11-09 15:25:14+02:00 [COMMAND_EXIT_CODE="0"]
