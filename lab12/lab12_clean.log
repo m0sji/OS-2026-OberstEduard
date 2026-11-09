@@ -1,0 +1,639 @@
+Script started on 2026-11-09 14:29:43+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="101" LINES="47"]
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ pwd
+666;vte.shell.preexec!/home/capziro/OS-2026-OberstEduard/lab12
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ gcc --version
+666;vte.shell.preexec!gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Copyright (C) 2025 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ H2J0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ cat > prodcons.c << 'EOF'
+/* prodcons.c - producer and consumer around a buffer of 4 slots.
+ *   empty = free slots (starts at SIZE), full = filled slots (starts at 0), lock = the buffer itself.
+ * Build: gcc -Wall -pthread -o prodcons prodcons.c
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+#define SIZE 4
+#define ITEMS 8
+
+7mint buf[SIZE];27m
+7mint in = 0, out = 0, count = 0;	  /* count only for printing */27m
+7msem_t empty, full;27m
+7mpthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;27m
+
+7mvoid *producer(void *arg) {27m
+7m    for (int item = 1; item <= ITEMS; item++) {27m
+7m	  sem_wait(&empty);		  /* wait for a free slot */27m
+7m	  pthread_mutex_lock(&lock);27m
+7m	  buf[in] = item;27m
+7m	  in = (in + 1) % SIZE;27m
+7m	  count++;27m
+7m	  printf("put %d      (in buffer: %d)\n", item, count);27m
+7m	  pthread_mutex_unlock(&lock);27m
+7m	  sem_post(&full);		  /* one more filled slot */27m
+7m    }27m
+7m    return NULL;27m
+7m}27m
+
+7mvoid *consumer(void *arg) {27m
+7m    for (int k = 0; k < ITEMS; k++) {27m
+7m	  sem_wait(&full);		  /* wait for something to take */27m
+7m	  pthread_mutex_lock(&lock);27m
+7m	  int item = buf[out];27m
+7m	  out = (out + 1) % SIZE;27m
+7m	  count--;27m
+7m	  printf("	      take %d	(in buffer: %d)\n", item, count);27m
+7m	  pthread_mutex_unlock(&lock);27m
+7m	  sem_post(&empty);		  /* one more free slot */27m
+7m	  usleep(300000);		  /* the consumer is slow */27m
+7m    }27m
+7m    return NULL;27m
+7m}27m
+
+7mint main(void) {27m
+7m    sem_init(&empty, 0, SIZE);27m
+7m    sem_init(&full, 0, 0);27m
+7m    pthread_t p, c;27m
+7m    pthread_create(&c, NULL, consumer, NULL);27m
+7m    pthread_create(&p, NULL, producer, NULL);27m
+7m    pthread_join(p, NULL);27m
+7m    pthread_join(c, NULL);27m
+7m    sem_destroy(&empty);27m
+7m    sem_destroy(&full);27m
+7m    return 0;27m
+7m}27m
+intObuf[SIZE];AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+int in = 0, out = 0, count = 0;		/* count only for printing */
+sem_t empty, full;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+void *producer(void *arg) {
+    for (int item = 1; item <= ITEMS; item++) {
+	sem_wait(&empty);		/* wait for a free slot */
+	pthread_mutex_lock(&lock);
+	buf[in] = item;
+	in = (in + 1) % SIZE;
+	count++;
+	printf("put %d	    (in buffer: %d)\n", item, count);
+	pthread_mutex_unlock(&lock);
+	sem_post(&full);		/* one more filled slot */
+    }
+    return NULL;
+}
+
+void *consumer(void *arg) {
+    for (int k = 0; k < ITEMS; k++) {
+	sem_wait(&full);		/* wait for something to take */
+	pthread_mutex_lock(&lock);
+	int item = buf[out];
+	out = (out + 1) % SIZE;
+	count--;
+	printf("	    take %d   (in buffer: %d)\n", item, count);
+	pthread_mutex_unlock(&lock);
+	sem_post(&empty);		/* one more free slot */
+	usleep(300000);			/* the consumer is slow */
+    }
+    return NULL;
+}
+
+int main(void) {
+    sem_init(&empty, 0, SIZE);
+    sem_init(&full, 0, 0);
+    pthread_t p, c;
+    pthread_create(&c, NULL, consumer, NULL);
+    pthread_create(&p, NULL, producer, NULL);
+    pthread_join(p, NULL);
+    pthread_join(c, NULL);
+    sem_destroy(&empty);
+    sem_destroy(&full);
+    return 0;
+}
+EOF
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgcc -Wall -pthread -o prodcons prodcons.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgcc -Wall -pthread -o prodcons prodcons.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ ./prodcons
+666;vte.shell.preexec!put 1	 (in buffer: 1)
+put 2	   (in buffer: 2)
+put 3	   (in buffer: 3)
+put 4	   (in buffer: 4)
+	    take 1   (in buffer: 3)
+put 5	   (in buffer: 4)
+	    take 2   (in buffer: 3)
+put 6	   (in buffer: 4)
+	    take 3   (in buffer: 3)
+put 7	   (in buffer: 4)
+	    take 4   (in buffer: 3)
+put 8	   (in buffer: 4)
+	    take 5   (in buffer: 3)
+	    take 6   (in buffer: 2)
+	    take 7   (in buffer: 1)
+	    take 8   (in buffer: 0)
+0;capziro@capziro-3:e~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$e7mcpdprodcons.c6prodcons2.c27mrecmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCcp prodcons.c prodcons2.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mperl -0pi -e 's/(	 sem_wait\(&empty\);[^\n]*\n)27m7m(27m7m	pthread_mutex_lock\(&lock\);\n)/$2$1/' prodcons2.c27m
+AACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCperl -0pi -e 's/(	   sem_wait\(&empty\);[^\n]*\n)(	pthread_mutex_lock\(&lock\);\n)/$2$1/' prodcons2.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgrep -n -A1 "pthread_mutex_lock(&lock);" prodcons2.c 27m7m|27m7m head -327m
+AACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrep -n -A1 "pthread_mutex_lock(&lock);" prodcons2.c | head -3
+A
+666;vte.shell.preexec!20:	 pthread_mutex_lock(&lock);
+21-	   sem_wait(&empty);		   /* wait for a free slot */
+--
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgcc -Wall -pthread -o prodcons2 prodcons2.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgcc -Wall -pthread -o prodcons2 prodcons2.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mtimtimeout.5p./prodcons2;hechox"exitdcode:"$?"
+666;vte.shell.preexec!put 1	 (in buffer: 1)
+put 2	   (in buffer: 2)
+put 3	   (in buffer: 3)
+put 4	   (in buffer: 4)
+exit code: 124
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mcat > condvar.c << 'EOF'27m
+7m/* condvar.c - the order.c problem, solved with a mutex and a condition variable.27m
+7m * Build: gcc -Wall -pthread -o condvar condvar.c27m
+7m */27m
+7m#include <stdio.h>27m
+7m#include <string.h>27m
+7m#include <unistd.h>27m
+7m#include <pthread.h>27m
+
+7mchar message[32];27m
+7mint ready = 0;			  /* the condition itself */27m
+7mpthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;27m
+7mpthread_cond_t changed = PTHREAD_COND_INITIALIZER;27m
+
+7mvoid *writer(void *arg) {27m
+7m    sleep(1);27m
+7m    pthread_mutex_lock(&lock);27m
+7m    strcpy(message, "hello");27m
+7m    ready = 1;27m
+7m    printf("A: message written\n");27m
+7m    pthread_cond_signal(&changed);	  /* wake one waiter */27m
+7m    pthread_mutex_unlock(&lock);27m
+7m    return NULL;27m
+7m}27m
+
+7mvoid *reader(void *arg) {27m
+7m    pthread_mutex_lock(&lock);27m
+7m    while (!ready) {			  /* while, not if: re-check after waking */27m
+7m	  printf("B: not ready, I sleep\n");27m
+7m	  pthread_cond_wait(&changed, &lock);	/* unlocks, sleeps, locks again */27m
+7m    }27m
+7m    printf("B: I read \"%s\"\n", message);27m
+7m    pthread_mutex_unlock(&lock);27m
+7m    return NULL;27m
+7m}27m
+
+7mint main(void) {27m
+7m    pthread_t a, b;27m
+7m    pthread_create(&b, NULL, reader, NULL);27m
+7m    pthread_create(&a, NULL, writer, NULL);27m
+7m    pthread_join(a, NULL);27m
+7m    pthread_join(b, NULL);27m
+7m    return 0;27m
+7m}27m
+0;capziro@capziro-3:A~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ cat > condvar.c << 'EOF'
+/* condvar.c - the order.c problem, solved with a mutex and a condition variable.
+ * Build: gcc -Wall -pthread -o condvar condvar.c
+ */
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <pthread.h>
+
+char message[32];
+int ready = 0;				/* the condition itself */
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t changed = PTHREAD_COND_INITIALIZER;
+
+void *writer(void *arg) {
+    sleep(1);
+    pthread_mutex_lock(&lock);
+    strcpy(message, "hello");
+    ready = 1;
+    printf("A: message written\n");
+    pthread_cond_signal(&changed);	/* wake one waiter */
+    pthread_mutex_unlock(&lock);
+    return NULL;
+}
+
+void *reader(void *arg) {
+    pthread_mutex_lock(&lock);
+    while (!ready) {			/* while, not if: re-check after waking */
+	printf("B: not ready, I sleep\n");
+	pthread_cond_wait(&changed, &lock);   /* unlocks, sleeps, locks again */
+    }
+    printf("B: I read \"%s\"\n", message);
+    pthread_mutex_unlock(&lock);
+    return NULL;
+}
+
+int main(void) {
+    pthread_t a, b;
+    pthread_create(&b, NULL, reader, NULL);
+    pthread_create(&a, NULL, writer, NULL);
+    pthread_join(a, NULL);
+    pthread_join(b, NULL);
+    return 0;
+}
+EOF
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgcc -Wall -pthread -o condvar condvar.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgcc -Wall -pthread -o condvar condvar.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ ./condvar
+666;vte.shell.preexec!B: not ready, I sleep
+A: message written
+B: I read "hello"
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mcp condvar.c condvar_if.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCcp condvar.c condvar_if.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7msed -i 's/while (!ready)/if (!ready)/' condvar_if.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCsed -i 's/while (!ready)/if (!ready)/' condvar_if.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgrep -n "if (!ready)" condvar_if.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrep -n "if (!ready)" condvar_if.c
+A
+bash:l!ready: event not found
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgcc -Wall -pthread -o condvar_if condvar_if.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgcc -Wall -pthread -o condvar_if condvar_if.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7m./c./condvar_if
+666;vte.shell.preexec!B: not ready, I sleep
+A: message written
+B: I read "hello"
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ H2J0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ cat > readers.c << 'EOF'
+/* readers.c - readers and writers with two semaphores.
+ *   Many readers may read together; a writer must be alone.
+ * Build: gcc -Wall -pthread -o readers readers.c
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+#define READERS 3
+7m#define WRITERS 227m
+
+7mint value = 0;		  /* the shared data */27m
+7mint readers = 0;		  /* how many are reading now */27m
+7msem_t rlock;			  /* protects the counter readers */27m
+7msem_t room;			  /* 1 = the room is free for a writer */27m
+
+7mvoid *reader(void *arg) {27m
+7m    long id = (long)arg;27m
+7m    sem_wait(&rlock);27m
+7m    if (++readers == 1)	  /* the first reader in locks out the writers */27m
+7m	  sem_wait(&room);27m
+7m    sem_post(&rlock);27m
+
+7m    printf("reader %ld reads %d   (readers inside: %d)\n", id, value, readers);27m
+7m    usleep(200000);27m
+
+7m    sem_wait(&rlock);27m
+7m    if (--readers == 0)	  /* the last reader out lets the writers in */27m
+7m	  sem_post(&room);27m
+7m    sem_post(&rlock);27m
+7m    return NULL;27m
+7m}27m
+
+7mvoid *writer(void *arg) {27m
+7m    long id = (long)arg;27m
+7m    sem_wait(&room);		  /* alone in the room */27m
+7m    value += 10;27m
+7m    printf("writer %ld writes %d (alone)\n", id, value);27m
+7m    usleep(200000);27m
+7m    sem_post(&room);27m
+7m    return NULL;27m
+7m}27m
+
+7mint main(void) {27m
+7m    sem_init(&rlock, 0, 1);27m
+7m    sem_init(&room, 0, 1);27m
+7m    pthread_t r[READERS], w[WRITERS];27m
+7m    pthread_create(&w[0], NULL, writer, (void *)1L);27m
+7m    for (long i = 0; i < READERS; i++)27m
+7m	  pthread_create(&r[i], NULL, reader, (void *)(i + 1));27m
+7m    pthread_create(&w[1], NULL, writer, (void *)2L);27m
+7m    for (int i = 0; i < READERS; i++) pthread_join(r[i], NULL);27m
+7m    for (int i = 0; i < WRITERS; i++) pthread_join(w[i], NULL);27m
+7m    return 0;27m
+7m}27m
+#definemWRITERSA2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+int value = 0;			/* the shared data */
+int readers = 0;		/* how many are reading now */
+sem_t rlock;			/* protects the counter readers */
+sem_t room;			/* 1 = the room is free for a writer */
+
+void *reader(void *arg) {
+    long id = (long)arg;
+    sem_wait(&rlock);
+    if (++readers == 1)		/* the first reader in locks out the writers */
+	sem_wait(&room);
+    sem_post(&rlock);
+
+    printf("reader %ld reads %d	  (readers inside: %d)\n", id, value, readers);
+    usleep(200000);
+
+    sem_wait(&rlock);
+    if (--readers == 0)		/* the last reader out lets the writers in */
+	sem_post(&room);
+    sem_post(&rlock);
+    return NULL;
+}
+
+void *writer(void *arg) {
+    long id = (long)arg;
+    sem_wait(&room);		/* alone in the room */
+    value += 10;
+    printf("writer %ld writes %d (alone)\n", id, value);
+    usleep(200000);
+    sem_post(&room);
+    return NULL;
+}
+
+int main(void) {
+    sem_init(&rlock, 0, 1);
+    sem_init(&room, 0, 1);
+    pthread_t r[READERS], w[WRITERS];
+    pthread_create(&w[0], NULL, writer, (void *)1L);
+    for (long i = 0; i < READERS; i++)
+	pthread_create(&r[i], NULL, reader, (void *)(i + 1));
+    pthread_create(&w[1], NULL, writer, (void *)2L);
+    for (int i = 0; i < READERS; i++) pthread_join(r[i], NULL);
+    for (int i = 0; i < WRITERS; i++) pthread_join(w[i], NULL);
+    return 0;
+}
+EOF
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgcc -Wall -pthread -o readers readers.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgcc -Wall -pthread -o readers readers.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ ./readers
+666;vte.shell.preexec!writer 1 writes 10 (alone)
+reader 1 reads 10   (readers inside: 1)
+reader 3 reads 10   (readers inside: 2)
+reader 2 reads 10   (readers inside: 3)
+writer 2 writes 20 (alone)
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ ./readers
+666;vte.shell.preexec!writer 1 writes 10 (alone)
+reader 1 reads 10   (readers inside: 1)
+reader 2 reads 10   (readers inside: 2)
+reader 3 reads 10   (readers inside: 3)
+writer 2 writes 20 (alone)
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mcat > deadlock.c << 'EOF'27m
+7m/* deadlock.c - two threads, two mutexes, taken in opposite order.27m
+7m * Build: gcc -Wall -pthread -o deadlock deadlock.c27m
+7m * Run:   timeout 5 ./deadlock; echo "exit code: $?"	 (124 = killed by timeout)27m
+7m */27m
+7m#include <stdio.h>27m
+7m#include <unistd.h>27m
+7m#include <pthread.h>27m
+
+7mpthread_mutex_t A = PTHREAD_MUTEX_INITIALIZER;27m
+7mpthread_mutex_t B = PTHREAD_MUTEX_INITIALIZER;27m
+
+7mvoid *one(void *arg) {27m
+7m    pthread_mutex_lock(&A);27m
+7m    printf("one: I have A, I want B\n");27m
+7m    sleep(1);27m
+7m    pthread_mutex_lock(&B);		  /* waits for two */27m
+7m    printf("one: I have both\n");27m
+7m    pthread_mutex_unlock(&B);27m
+7m    pthread_mutex_unlock(&A);27m
+7m    return NULL;27m
+7m}27m
+
+7mvoid *two(void *arg) {27m
+7m    pthread_mutex_lock(&B);		  /* the fix: lock A first here too */27m
+7m    printf("two: I have B, I want A\n");27m
+7m    sleep(1);27m
+7m    pthread_mutex_lock(&A);		  /* waits for one */27m
+7m    printf("two: I have both\n");27m
+7m    pthread_mutex_unlock(&A);27m
+7m    pthread_mutex_unlock(&B);27m
+7m    return NULL;27m
+7m}27m
+
+7mint main(void) {27m
+7m    pthread_t t1, t2;27m
+7m    pthread_create(&t1, NULL, one, NULL);27m
+7m    pthread_create(&t2, NULL, two, NULL);27m
+7m    pthread_join(t1, NULL);27m
+7m    pthread_join(t2, NULL);27m
+7m    printf("done\n");27m
+7m    return 0;27m
+7m}27m
+0;capziro@capziro-3:A~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ cat > deadlock.c << 'EOF'
+/* deadlock.c - two threads, two mutexes, taken in opposite order.
+ * Build: gcc -Wall -pthread -o deadlock deadlock.c
+ * Run:	  timeout 5 ./deadlock; echo "exit code: $?"   (124 = killed by timeout)
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+
+pthread_mutex_t A = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t B = PTHREAD_MUTEX_INITIALIZER;
+
+void *one(void *arg) {
+    pthread_mutex_lock(&A);
+    printf("one: I have A, I want B\n");
+    sleep(1);
+    pthread_mutex_lock(&B);		/* waits for two */
+    printf("one: I have both\n");
+    pthread_mutex_unlock(&B);
+    pthread_mutex_unlock(&A);
+    return NULL;
+}
+
+void *two(void *arg) {
+    pthread_mutex_lock(&B);		/* the fix: lock A first here too */
+    printf("two: I have B, I want A\n");
+    sleep(1);
+    pthread_mutex_lock(&A);		/* waits for one */
+    printf("two: I have both\n");
+    pthread_mutex_unlock(&A);
+    pthread_mutex_unlock(&B);
+    return NULL;
+}
+
+int main(void) {
+    pthread_t t1, t2;
+    pthread_create(&t1, NULL, one, NULL);
+    pthread_create(&t2, NULL, two, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+    printf("done\n");
+    return 0;
+}
+EOF
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgcc -Wall -pthread -o deadlock deadlock.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgcc -Wall -pthread -o deadlock deadlock.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mtimtimeout.5d./deadlock;hechox"exitdcode:"$?"
+666;vte.shell.preexec!one: I have A, I want B
+two: I have B, I want A
+exit code: 124
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mcp deadlock.c deadlock_nosleep.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCcp deadlock.c deadlock_nosleep.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7msed -i '/sleep(1);/d' deadlock_nosleep.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCsed -i '/sleep(1);/d' deadlock_nosleep.c
+A
+666;vte.shell.preexec!666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgrep -c "sleep" deadlock_nosleep.c27m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrep -c "sleep" deadlock_nosleep.c
+A
+666;vte.shell.preexec!0
+666;vte.shell.postexec=17;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mgcc -Wall -pthread -o deadlock_nosleep deadlock_nosle27m7me27m7mp.c27m
+AACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgcc -Wall -pthread -o deadlock_nosleep deadlock_nosleep.c
+A
+0;capziro@capziro-3:c~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$cforiioin:$(seq210);Odortimeoutd2l./deadlock_nosleepp>e/dev/null;0echoz"runc$i:iexit:codeS$?";6donerstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mfor i in $(seq 10); do timeout 2 ./deadlock_nosleep >27m7m 27m7m/dev/null; echo "run $i: exit code $?"; done27mA
+666;vte.shell.preexec!run 1: exit code 124
+run 2: exit code 124
+run 3: exit code 0
+run 4: exit code 124
+run 5: exit code 124
+run 6: exit code 124
+run 7: exit code 124
+run 8: exit code 124
+run 9: exit code 124
+run 10: exit code 124
+0;capziro@capziro-3:e~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$eforEiuind$(seq2100);tdostimeoute1m./deadlock_nosleepc>p/dev/null/||-echo-hang;tdoner|/wcb-l01;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mfor i in $(seq 100); do timeout 1 ./deadlock_nosleep 27m7m>27m7m /dev/null || echo hang; done | wc -l27mA
+666;vte.shell.preexec!
+82
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ H2J0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ 7mcp deadlock.c deadlock_orig.c27m
+7mcat > deadlock.c << 'EOF'27m
+7m/* deadlock.c - two threads, two mutexes, now taken in the SAME order (fixed).27m
+7m * Build: gcc -Wall -pthread -o deadlock deadlock.c27m
+7m * Run:   timeout 5 ./deadlock; echo "exit code: $?"	 (0 = finished normally)27m
+7m */27m
+7m#include <stdio.h>27m
+7m#include <unistd.h>27m
+7m#include <pthread.h>27m
+
+7mpthread_mutex_t A = PTHREAD_MUTEX_INITIALIZER;27m
+7mpthread_mutex_t B = PTHREAD_MUTEX_INITIALIZER;27m
+
+7mvoid *one(void *arg) {27m
+7m    pthread_mutex_lock(&A);27m
+7m    printf("one: I have A, I want B\n");27m
+7m    sleep(1);27m
+7m    pthread_mutex_lock(&B);27m
+7m    printf("one: I have both\n");27m
+7m    pthread_mutex_unlock(&B);27m
+7m    pthread_mutex_unlock(&A);27m
+7m    return NULL;27m
+7m}27m
+
+7mvoid *two(void *arg) {27m
+7m    pthread_mutex_lock(&A);		  /* the fix: A first, the same order as one() */27m
+7m    printf("two: I have B, I want A\n");27m
+7m    sleep(1);27m
+7m    pthread_mutex_lock(&B);27m
+7m    printf("two: I have both\n");27m
+7m    pthread_mutex_unlock(&B);27m
+7m    pthread_mutex_unlock(&A);27m
+7m    return NULL;27m
+7m}27m
+
+7mint main(void) {27m
+7m    pthread_t t1, t2;27m
+7m    pthread_create(&t1, NULL, one, NULL);27m
+7m    pthread_create(&t2, NULL, two, NULL);27m
+7m    pthread_join(t1, NULL);27m
+7m    pthread_join(t2, NULL);27m
+7m    printf("done\n");27m
+7m    return 0;27m
+7m}27m
+7mEOF27m
+7mdiff deadlock_orig.c deadlock.c27m
+7mgcc -Wall -pthread -o deadlock deadlock.c27m
+7mtimeout 5 ./deadlock; echo "exit code: $?"27mH2J0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ cp deadlock.c deadlock_orig.c
+cat > deadlock.c << 'EOF'
+/* deadlock.c - two threads, two mutexes, now taken in the SAME order (fixed).
+ * Build: gcc -Wall -pthread -o deadlock deadlock.c
+ * Run:	  timeout 5 ./deadlock; echo "exit code: $?"   (0 = finished normally)
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+
+pthread_mutex_t A = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t B = PTHREAD_MUTEX_INITIALIZER;
+
+void *one(void *arg) {
+    pthread_mutex_lock(&A);
+    printf("one: I have A, I want B\n");
+    sleep(1);
+    pthread_mutex_lock(&B);
+    printf("one: I have both\n");
+    pthread_mutex_unlock(&B);
+    pthread_mutex_unlock(&A);
+    return NULL;
+}
+
+void *two(void *arg) {
+    pthread_mutex_lock(&A);		/* the fix: A first, the same order as one() */
+    printf("two: I have B, I want A\n");
+    sleep(1);
+    pthread_mutex_lock(&B);
+    printf("two: I have both\n");
+    pthread_mutex_unlock(&B);
+    pthread_mutex_unlock(&A);
+    return NULL;
+}
+
+int main(void) {
+    pthread_t t1, t2;
+    pthread_create(&t1, NULL, one, NULL);
+    pthread_create(&t2, NULL, two, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+    printf("done\n");
+    return 0;
+}
+EOF
+diff deadlock_orig.c deadlock.c
+gcc -Wall -pthread -o deadlock deadlock.c
+timeout 5 ./deadlock; echo "exit code: $?"
+666;vte.shell.preexec!1c1;C
+< /* deadlock.c - two threads, two mutexes, taken in opposite order.
+---
+> /* deadlock.c - two threads, two mutexes, now taken in the SAME order (fixed).
+3c3
+<  * Run:   timeout 5 ./deadlock; echo "exit code: $?"	 (124 = killed by timeout)
+---
+>  * Run:   timeout 5 ./deadlock; echo "exit code: $?"	 (0 = finished normally)
+16c16
+<     pthread_mutex_lock(&B);		  /* waits for two */
+---
+>     pthread_mutex_lock(&B);
+24c24
+<     pthread_mutex_lock(&B);		  /* the fix: lock A first here too */
+---
+>     pthread_mutex_lock(&A);		  /* the fix: A first, the same order as one() */
+27c27
+<     pthread_mutex_lock(&A);		  /* waits for one */
+---
+>     pthread_mutex_lock(&B);
+29d28
+<     pthread_mutex_unlock(&A);
+30a30
+>     pthread_mutex_unlock(&A);
+666;vte.shell.preexec!one:CI have A, I want B
+one: I have both
+two: I have B, I want A
+two: I have both
+done
+exit code: 0
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab120;capziro@capziro-3:~/OS-2026-OberstEduard/lab12666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab1201;32mcapziro@capziro-300m:01;34m~/OS-2026-OberstEduard/lab1200m$ exit
+666;vte.shell.preexec!exit
+
+Script done on 2026-11-09 14:37:27+02:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,346 @@
+Script started on 2026-11-09 14:05:44+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="101" LINES="47"]
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ pwd
+[?2004l]133;C\]666;vte.shell.preexec!\/home/capziro/OS-2026-OberstEduard/lab11
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ls
+[?2004l]133;C\]666;vte.shell.preexec!\atomic.c  lab11.log  [0m[01;32mmutex[0m  mutex.c  [01;32morder[0m  order.c  [01;32mparking[0m  parking.c  [01;32mrace[0m  race.c  [01;32msem[0m  sem.c
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ gcc --version
+[?2004l]133;C\]666;vte.shell.preexec!\gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Copyright (C) 2025 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ car[Kt race.c
+[?2004l]133;C\]666;vte.shell.preexec!\/* race.c - two threads add to the same counter, with no protection.
+ * Build: gcc -Wall -pthread -o race race.c   (no -O2: keep counter++ in memory)
+ * Run:   ./race   (several times)
+ */
+#include <stdio.h>
+#include <pthread.h>
+
+#define N 1000000
+
+long counter = 0;               /* shared by both threads */
+
+void *add(void *arg) {
+    for (int i = 0; i < N; i++)
+        counter++;              /* read, add 1, write back: three steps */
+    return NULL;
+}
+
+int main(void) {
+    pthread_t a, b;
+    pthread_create(&a, NULL, add, NULL);
+    pthread_create(&b, NULL, add, NULL);
+    pthread_join(a, NULL);
+    pthread_join(b, NULL);
+    printf("counter = %ld (expected %d)\n", counter, 2 * N);
+    return 0;
+}
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o race race.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o race race.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./race
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 1064356 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./race
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 1438774 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./race
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 1060328 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mcat mutex.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat mutex.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\/* mutex.c - the same counter, now protected by a mutex.
+ * Build: gcc -Wall -pthread -o mutex mutex.c
+ */
+#include <stdio.h>
+#include <pthread.h>
+
+#define N 1000000
+
+long counter = 0;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+void *add(void *arg) {
+    for (int i = 0; i < N; i++) {
+        pthread_mutex_lock(&lock);      /* only one thread past this line */
+        counter++;                      /* the critical section */
+        pthread_mutex_unlock(&lock);    /* let the other one in */
+    }
+    return NULL;
+}
+
+int main(void) {
+    pthread_t a, b;
+    pthread_create(&a, NULL, add, NULL);
+    pthread_create(&b, NULL, add, NULL);
+    pthread_join(a, NULL);
+    pthread_join(b, NULL);
+    printf("counter = %ld (expected %d)\n", counter, 2 * N);
+    return 0;
+}
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o mutex mutex.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o mutex mutex.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./mutex
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./mutex
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./mutex
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mcat sem.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat sem.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\/* sem.c - the same counter, protected by a semaphore that starts at 1.
+ * Build: gcc -Wall -pthread -o sem sem.c
+ */
+#include <stdio.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+#define N 1000000
+
+long counter = 0;
+sem_t s;
+
+void *add(void *arg) {
+    for (int i = 0; i < N; i++) {
+        sem_wait(&s);           /* 1 -> 0: I go in; at 0: wait */
+        counter++;
+        sem_post(&s);           /* 0 -> 1: the next one may go in */
+    }
+    return NULL;
+}
+
+int main(void) {
+    sem_init(&s, 0, 1);         /* 0 = shared between threads, 1 = start value */
+    pthread_t a, b;
+    pthread_create(&a, NULL, add, NULL);
+    pthread_create(&b, NULL, add, NULL);
+    pthread_join(a, NULL);
+    pthread_join(b, NULL);
+    printf("counter = %ld (expected %d)\n", counter, 2 * N);
+    sem_destroy(&s);
+    return 0;
+}
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o sem sem.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o sem sem.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./sem
+[?2004l]133;C\]666;vte.shell.preexec!\^[[Acounter = 2000000 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./sem
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./sem
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mcp sem.c sem2.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccp sem.c sem2.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7msed -i 's/sem_init(&s, 0, 1)/sem_init(\&s, 0, 2)/' se[27m[7mm[27m[7m2.c [27m
+[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csed -i 's/sem_init(&s, 0, 1)/sem_init(\&s, 0, 2)/' sem2.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgrep sem_init sem2.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep sem_init sem2.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\    [01;31m[Ksem_init[m[K(&s, 0, 2);         /* 0 = shared between threads, 1 = start value */
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o sem2 sem2.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o sem2 sem2.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./sem2
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 1679308 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./sem2
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 1893141 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./sem2
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 1520773 (expected 2000000)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ time ./race
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 1073708 (expected 2000000)
+
+real	0m0.011s
+user	0m0.014s
+sys	0m0.004s
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ tie[Kme ./mutex
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+
+real	0m0.245s
+user	0m0.214s
+sys	0m0.271s
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ time ./sem
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+
+real	0m0.291s
+user	0m0.257s
+sys	0m0.307s
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mcat order.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat order.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\/* order.c - thread B must wait until thread A has written the message.
+ * A semaphore that starts at 0 is a signal: sem_wait blocks until someone posts.
+ * Build: gcc -Wall -pthread -o order order.c
+ */
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+char message[32];
+sem_t ready;                    /* starts at 0: nothing is ready yet */
+
+void *writer(void *arg) {
+    sleep(1);                   /* pretend the work takes a while */
+    strcpy(message, "hello");
+    printf("A: message written\n");
+    sem_post(&ready);           /* 0 -> 1: wake up B */
+    return NULL;
+}
+
+void *reader(void *arg) {
+    printf("B: waiting for the message...\n");
+    sem_wait(&ready);           /* blocks while the value is 0 */
+    printf("B: I read \"%s\"\n", message);
+    return NULL;
+}
+
+int main(void) {
+    sem_init(&ready, 0, 0);
+    pthread_t a, b;
+    pthread_create(&b, NULL, reader, NULL);   /* B starts first, on purpose */
+    pthread_create(&a, NULL, writer, NULL);
+    pthread_join(a, NULL);
+    pthread_join(b, NULL);
+    sem_destroy(&ready);
+    return 0;
+}
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o order order.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o order order.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7m./order[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C./order
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\B: waiting for the message...
+A: message written
+B: I read "hello"
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mcp order.c order1.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccp order.c order1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7msed -i 's/sem_init(&ready, 0, 0)/sem_init(\&ready, 0,[27m[7m [27m[7m1)/' order1.c [27m
+[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csed -i 's/sem_init(&ready, 0, 0)/sem_init(\&ready, 0, 1)/' order1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgrep sem_init order1.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep sem_init order1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\    [01;31m[Ksem_init[m[K(&ready, 0, 1);
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o order1 order1.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o order1 order1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ./order [K1
+[?2004l]133;C\]666;vte.shell.preexec!\B: waiting for the message...
+B: I read ""
+A: message written
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mcat parking.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat parking.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\/* parking.c - 6 cars, 3 places. A semaphore that starts at 3 counts the free places.
+ * Build: gcc -Wall -pthread -o parking parking.c
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+#define PLACES 3
+#define CARS 6
+
+sem_t places;                   /* free places */
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+int inside = 0;                 /* only for printing */
+
+void *car(void *arg) {
+    long id = (long)arg;
+
+    sem_wait(&places);          /* take a place, or wait */
+    pthread_mutex_lock(&lock);
+    inside++;
+    printf("car %ld enters (inside: %d)\n", id, inside);
+    pthread_mutex_unlock(&lock);
+
+    sleep(1);                   /* parked */
+
+    pthread_mutex_lock(&lock);
+    inside--;
+    printf("car %ld leaves (inside: %d)\n", id, inside);
+    pthread_mutex_unlock(&lock);
+    sem_post(&places);          /* give the place back */
+    return NULL;
+}
+
+int main(void) {
+    sem_init(&places, 0, PLACES);
+    pthread_t t[CARS];
+    for (long i = 0; i < CARS; i++)
+        pthread_create(&t[i], NULL, car, (void *)(i + 1));
+    for (int i = 0; i < CARS; i++)
+        pthread_join(t[i], NULL);
+    sem_destroy(&places);
+    return 0;
+}
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o parking parking.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o parking parking.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ^[[200~./parking
+[?2004l]133;C\]666;vte.shell.preexec!\bash: [200~./parking: No such file or directory
+]666;vte.shell.postexec=127\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ ~[K[7m./parking[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C./parking
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\car 1 enters (inside: 1)
+car 3 enters (inside: 2)
+car 2 enters (inside: 3)
+car 1 leaves (inside: 2)
+car 3 leaves (inside: 1)
+car 4 enters (inside: 2)
+car 2 leaves (inside: 1)
+car 5 enters (inside: 2)
+car 6 enters (inside: 3)
+car 4 leaves (inside: 2)
+car 5 leaves (inside: 1)
+car 6 leaves (inside: 0)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mcp parking.c parking1.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccp parking.c parking1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7msed -i 's/#define PLACES 3/#define PLACES 1/' parking[27m[7m1[27m[7m.c [27m
+[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csed -i 's/#define PLACES 3/#define PLACES 1/' parking1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgrep "define PLACES" parking1.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep "define PLACES" parking1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\#[01;31m[Kdefine PLACES[m[K 1
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o parking1 parking1.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o parking1 parking1.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ time ./parking1
+[?2004l]133;C\]666;vte.shell.preexec!\car 1 enters (inside: 1)
+car 1 leaves (inside: 0)
+car 2 enters (inside: 1)
+car 2 leaves (inside: 0)
+car 3 enters (inside: 1)
+car 3 leaves (inside: 0)
+car 5 enters (inside: 1)
+car 5 leaves (inside: 0)
+car 4 enters (inside: 1)
+car 4 leaves (inside: 0)
+car 6 enters (inside: 1)
+car 6 leaves (inside: 0)
+
+real	0m6.005s
+user	0m0.000s
+sys	0m0.005s
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ [7mgcc -Wall -pthread -o atomic atomic.c[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -pthread -o atomic atomic.c
+[A
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ time ./atomic.c[K[K
+[?2004l]133;C\]666;vte.shell.preexec!\counter = 2000000 (expected 2000000)
+
+real	0m0.071s
+user	0m0.132s
+sys	0m0.002s
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab11\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab11\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab11[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab11[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-11-09 14:09:53+02:00 [COMMAND_EXIT_CODE="0"]

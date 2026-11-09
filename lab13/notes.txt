@@ -1,0 +1,36 @@
+Lab 13 - Semaphores in Your Own Kernel
+Oberst Eduard, FAF-243
+
+Check 1: semtest printed "unknown sys call 24" and "unknown sys call 25",
+and "child: I ran after the parent" came before "parent: done, I let the child go".
+Check 2: semtest printed the parent line, then the child line, then
+ping 1 / pong 1 / ping 2 / pong 2 / ping 3 / pong 3 and "semtest: OK".
+Optional: sem_trydown (27) added, trytest printed 0, -1, 0.
+
+1. Without the lock, why do the letters mix?
+Every letter is written with its own write(1, p, 1), so one line costs
+31 system calls, 30 letters and 1 newline. Between any two of them the
+other process can also call write, and with 3 CPUs (make qemu uses
+-smp 3) both processes really run at the same time. So the console gets
+the letters of both processes in turn, the "AbAbAb" in my output.
+
+2. Which two lines of mix.c make one line a critical section?
+"if (uselock) sem_down(3);" before the inner for loop and
+"if (uselock) sem_up(3);" after it. Semaphore 3 starts at 1, so it works
+as a lock. The process that passes sem_down(3) writes its whole line,
+and the other one sleeps in sem_down(3) until sem_up(3).
+
+3. Why "while (s->value == 0)" and not "if"?
+wakeup(s) wakes all processes that sleep on s, but sem_up adds only one
+unit. The first one that gets the spinlock takes it, the others find 0.
+Also a process that was not sleeping can take the unit first. In my
+"mix lock" runs the parent took semaphore 3 again for all its 5 lines
+before the child got it once. With "if" the woken process would make the
+value negative and enter together with the other one.
+
+4. What would go wrong if sem_down slept holding the spinlock?
+sem_up must take the same spinlock before it can add 1 and call wakeup.
+If the sleeper kept the spinlock, sem_up would spin in acquire forever
+and the sleeper would never be woken, a deadlock. Also xv6 does not
+allow giving up the CPU while holding a spinlock (acquire turns off
+interrupts), and the scheduler panics in that case.
