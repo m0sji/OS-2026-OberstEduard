@@ -1,0 +1,166 @@
+Script started on 2026-11-23 15:14:42+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="101" LINES="47"]
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mcat > fire.c << 'EOF'[27m
+[7m/* fire.c - two threads of one process share the same memory.[27m
+[7m * Both add to the same counter, a million times each, WITHOUT a lock.[27m
+[7m * Build: gcc -Wall -Wextra -pthread -o fire fire.c   Run: ./fire[27m
+[7m */[27m
+[7m#include <stdio.h>[27m
+[7m#include <pthread.h>[27m
+
+[7m#define N 1000000[27m
+[7mlong counter = 0;              /* one variable, shared by both threads */[27m
+
+[7mvoid *work(void *arg) {[27m
+[7m    long id = (long)arg;[27m
+[7m    printf("thread %ld sees counter = %ld\n", id, counter);[27m
+[7m    for (int i = 0; i < N; i++)[27m
+[7m        counter++;             /* NOT atomic: read, add, write */[27m
+[7m    return NULL;[27m
+[7m}[27m
+
+[7mint main(void) {[27m
+[7m    pthread_t a, b;[27m
+[7m    pthread_create(&a, NULL, work, (void *)1);[27m
+[7m    pthread_create(&b, NULL, work, (void *)2);[27m
+[7m    pthread_join(a, NULL);[27m
+[7m    pthread_join(b, NULL);[27m
+[7m    printf("expected: %d\n", 2 * N);[27m
+[7m    printf("counter:  %ld   (lost updates: the race)\n", counter);[27m
+[7m    return 0;[27m
+[7m}[27m
+[7mEOF[27m[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ cat > fire.c << 'EOF'
+/* fire.c - two threads of one process share the same memory.
+ * Both add to the same counter, a million times each, WITHOUT a lock.
+ * Build: gcc -Wall -Wextra -pthread -o fire fire.c   Run: ./fire
+ */
+#include <stdio.h>
+#include <pthread.h>
+
+#define N 1000000
+long counter = 0;              /* one variable, shared by both threads */
+
+void *work(void *arg) {
+    long id = (long)arg;
+    printf("thread %ld sees counter = %ld\n", id, counter);
+    for (int i = 0; i < N; i++)
+        counter++;             /* NOT atomic: read, add, write */
+    return NULL;
+}
+
+int main(void) {
+    pthread_t a, b;
+    pthread_create(&a, NULL, work, (void *)1);
+    pthread_create(&b, NULL, work, (void *)2);
+    pthread_join(a, NULL);
+    pthread_join(b, NULL);
+    printf("expected: %d\n", 2 * N);
+    printf("counter:  %ld   (lost updates: the race)\n", counter);
+    return 0;
+}
+EOF
+[?2004l]133;C\]666;vte.shell.preexec!\]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mgcc -Wall -Wextra -pthread -o fire fire.c && echo BUI[27m[7mL[27m[7mD OK[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ gcc -Wall -Wextra -pthread -o fire fire.c && echo BUILD OK
+[?2004l]133;C\]666;vte.shell.preexec!\BUILD OK
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7m./fire; echo ---; ./fire; echo ---; ./fire[27m./fire; echo ---; ./fire; echo ---; ./fire
+[?2004l]133;C\]666;vte.shell.preexec!\thread 1 sees counter = 0
+thread 2 sees counter = 0
+expected: 2000000
+counter:  1056872   (lost updates: the race)
+---
+thread 1 sees counter = 0
+thread 2 sees counter = 0
+expected: 2000000
+counter:  1140029   (lost updates: the race)
+---
+thread 1 sees counter = 0
+thread 2 sees counter = 0
+expected: 2000000
+counter:  1030746   (lost updates: the race)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mfor i in $(seq 10); do ./fire | awk '/expected/{e=$2}[27m[7m [27m[7m/counter:/{c=$2} END{printf "run %2d: counter=%d lost=%d (%.1f%%)\n", NR, c, e-c, 100*(e-c)/e}' | se[27m[7md[27m[7m "s/run  *[0-9]*/run $i/"; done[27m[A[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ for i in $(seq 10); do ./fire | awk '/expected/{e=$2} /counter:/{c=$2} END{printf "run %2d: counter=%d lost=%d (%.1f%%)\n", NR, c, e-c, 100*(e-c)/e}' | sed "s/run  *[0-9]*/run $i/"; done
+[?2004l]133;C\]666;vte.shell.preexec!\run 1: counter=1040121 lost=959879 (48.0%)
+run 2: counter=1568207 lost=431793 (21.6%)
+run 3: counter=1009898 lost=990102 (49.5%)
+run 4: counter=1202915 lost=797085 (39.9%)
+run 5: counter=1223426 lost=776574 (38.8%)
+run 6: counter=1026630 lost=973370 (48.7%)
+run 7: counter=1002572 lost=997428 (49.9%)
+run 8: counter=1016896 lost=983104 (49.2%)
+run 9: counter=1000186 lost=999814 (50.0%)
+run 10: counter=1036369 lost=963631 (48.2%)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mfor i in $(seq 20); do ./fire | grep 'sees'; done | s[27m[7mo[27m[7mrt | uniq -c | sort -rn | head -15[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ for i in $(seq 20); do ./fire | grep 'sees'; done | sort | uniq -c | sort -rn | head -15
+[?2004l]133;C\]666;vte.shell.preexec!\     20 thread 1 sees counter = 0
+      7 thread 2 sees counter = 0
+      1 thread 2 sees counter = 7568
+      1 thread 2 sees counter = 7221
+      1 thread 2 sees counter = 6376
+      1 thread 2 sees counter = 5051
+      1 thread 2 sees counter = 44613
+      1 thread 2 sees counter = 44549
+      1 thread 2 sees counter = 3453
+      1 thread 2 sees counter = 32276
+      1 thread 2 sees counter = 27768
+      1 thread 2 sees counter = 18262
+      1 thread 2 sees counter = 17891
+      1 thread 2 sees counter = 17705
+      1 thread 2 sees counter = 17400
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mfor i in $(seq 20); do ./fire | grep -c 'sees counter[27m[7m [27m[7m= [1-9]'; done | sort | uniq -c[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ for i in $(seq 20); do ./fire | grep -c 'sees counter = [1-9]'; done | sort | uniq -c
+[?2004l]133;C\]666;vte.shell.preexec!\     13 0
+      7 1
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [K]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mcp fire.c fire4.c[27m
+[7mperl -0pi -e 's/pthread_t a, b;/pthread_t a, b, c, d;/; s/(    pthread_create\(&b, NULL, work, \(void[27m[7m [27m[7m\*\)2\);\n)/$1    pthread_create(&c, NULL, work, (void *)3);\n    pthread_create(&d, NULL, work, (vo[27m[7mi[27m[7md *)4);\n/; s/(    pthread_join\(b, NULL\);\n)/$1    pthread_join(c, NULL);\n    pthread_join(d, NUL[27m[7mL[27m[7m);\n/; s/2 \* N/4 * N/' fire4.c [27m
+[7mdiff fire.c fire4.c[27m[A[A[A[A[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ cp fire.c fire4.c
+perl -0pi -e 's/pthread_t a, b;/pthread_t a, b, c, d;/; s/(    pthread_create\(&b, NULL, work, \(void \*\)2\);\n)/$1    pthread_create(&c, NULL, work, (void *)3);\n    pthread_create(&d, NULL, work, (void *)4);\n/; s/(    pthread_join\(b, NULL\);\n)/$1    pthread_join(c, NULL);\n    pthread_join(d, NULL);\n/; s/2 \* N/4 * N/' fire4.c
+diff fire.c fire4.c
+[?2004l]133;C\]666;vte.shell.preexec!\]133;C\]666;vte.shell.preexec!\]133;C\]666;vte.shell.preexec!\20c20
+<     pthread_t a, b;
+---
+>     pthread_t a, b, c, d;
+22a23,24
+>     pthread_create(&c, NULL, work, (void *)3);
+>     pthread_create(&d, NULL, work, (void *)4);
+25c27,29
+<     printf("expected: %d\n", 2 * N);
+---
+>     pthread_join(c, NULL);
+>     pthread_join(d, NULL);
+>     printf("expected: %d\n", 4 * N);
+]666;vte.shell.postexec=1\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mgcc -Wall -Wextra -pthread -o fire4 fire4.c && echo B[27m[7mU[27m[7mILD OK && ./fire4[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ gcc -Wall -Wextra -pthread -o fire4 fire4.c && echo BUILD OK && ./fire4
+[?2004l]133;C\]666;vte.shell.preexec!\BUILD OK
+thread 2 sees counter = 0
+thread 3 sees counter = 5825
+thread 1 sees counter = 0
+thread 4 sees counter = 0
+expected: 4000000
+counter:  1309612   (lost updates: the race)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mfor p in fire fire4; do echo "== $p =="; for i in $(s[27m[7me[27m[7mq 10); do ./$p | awk '/expected/{e=$2} /counter:/{c=$2} END{printf "counter=%d lost=%d (%.1f%%)\n", [27m[7mc[27m[7m, e-c, 100*(e-c)/e}'; done; done[27m[A[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ for p in fire fire4; do echo "== $p =="; for i in $(seq 10); do ./$p | awk '/expected/{e=$2} /counter:/{c=$2} END{printf "counter=%d lost=%d (%.1f%%)\n", c, e-c, 100*(e-c)/e}'; done; done
+[?2004l]133;C\]666;vte.shell.preexec!\== fire ==
+counter=1014829 lost=985171 (49.3%)
+counter=1021429 lost=978571 (48.9%)
+counter=1178848 lost=821152 (41.1%)
+counter=1045132 lost=954868 (47.7%)
+counter=1006436 lost=993564 (49.7%)
+counter=1032867 lost=967133 (48.4%)
+counter=1051089 lost=948911 (47.4%)
+counter=1032334 lost=967666 (48.4%)
+counter=1068314 lost=931686 (46.6%)
+counter=1012901 lost=987099 (49.4%)
+== fire4 ==
+counter=1373754 lost=2626246 (65.7%)
+counter=1041460 lost=2958540 (74.0%)
+counter=1051139 lost=2948861 (73.7%)
+counter=1229809 lost=2770191 (69.3%)
+counter=1065307 lost=2934693 (73.4%)
+counter=1577293 lost=2422707 (60.6%)
+counter=1066378 lost=2933622 (73.3%)
+counter=1392446 lost=2607554 (65.2%)
+counter=1883285 lost=2116715 (52.9%)
+counter=1345865 lost=2654135 (66.4%)
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mfor p in fire fire4; do ./$p >/dev/null; for i in $(s[27m[7me[27m[7mq 10); do ./$p | awk '/expected/{e=$2} /counter:/{c=$2} END{print 100*(e-c)/e}'; done | awk -v p=$p [27m[7m'[27m[7m{s+=$1} END{printf "%s: average loss %.1f%% over %d runs\n", p, s/NR, NR}'; done[27m[A[Afor p in fire fire4; do ./$p >/dev/null; for i in $(seq 10); do ./$p | awk '/expected/{e=$2} /counter:/{c=$2} END{print 100*(e-c)/e}'; done | awk -v p=$p '{s+=$1} END{printf "%s: average loss %.1f%% over %d runs\n", p, s/NR, NR}'; done
+[?2004l]133;C\]666;vte.shell.preexec!\fire: average loss 45.5% over 10 runs
+fire4: average loss 69.2% over 10 runs
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ [7mfor f in fire fire4; do gcc -Wall -Wextra -pthread -o[27m[7m [27m[7m/dev/null $f.c && echo "OK $f"; done[27m[A]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ for f in fire fire4; do gcc -Wall -Wextra -pthread -o /dev/null $f.c && echo "OK $f"; done
+[?2004l]133;C\]666;vte.shell.preexec!\OK fire
+OK fire4
+]666;vte.shell.postexec=0\]7;file://capziro-3/home/capziro/OS-2026-OberstEduard/lab17\]0;capziro@capziro-3:~/OS-2026-OberstEduard/lab17\]666;vte.shell.precmd!\[?2004h]0;capziro@capziro-3: ~/OS-2026-OberstEduard/lab17[01;32mcapziro@capziro-3[00m:[01;34m~/OS-2026-OberstEduard/lab17[00m$ exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-11-23 15:18:21+02:00 [COMMAND_EXIT_CODE="0"]

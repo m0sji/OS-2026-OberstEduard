@@ -1,0 +1,26 @@
+Lab 18 - Build a User-Level Thread Switch
+Oberst Eduard, FAF-243
+
+Part 1: struct context has 14 uint64 fields (ra, sp, s0..s11, offsets 0..104).
+thread_create sets ctx.ra = func and ctx.sp = t->stack + STACK_SIZE.
+uthread_switch.S has the same 28 sd/ld lines as kernel/swtch.S (diff empty).
+Part 2: uthread printed thread_a/b/c started, then c, a, b took turns
+from 0 to 99, then "exit after 100" for c, a, b and
+"thread_schedule: no runnable threads". uthread | wc printed 307 622 3733.
+Optional: without the sp line, uthread_nosp got
+"usertrap(): unexpected scause 0xf" with sepc=0x114 and
+stval=0xfffffffffffffff8. That is sd ra,40(sp) in thread_a with sp = 0 - 48.
+
+What exactly does thread_switch save and load? Why is ra the register
+that makes execution continue in the other thread?
+thread_switch saves 14 registers of the current thread into old->ctx,
+ra, sp and s0 to s11, 112 bytes in total. Then it loads the same 14
+registers from new->ctx. Only callee-saved registers are needed, because
+thread_switch is called like a normal function, so the compiler already
+keeps the caller-saved ones (a0-a7, t0-t6) on the thread's own stack.
+The program counter is not saved. The last instruction ret jumps to the
+address in ra, and ra was just loaded from the next thread. For a thread
+that already ran, ra points right after its call of thread_switch in
+thread_schedule, so it goes on with its loop. For a new thread, ra is the
+start of its function, set by thread_create (thread_a is at 0x11c), so
+the first ret jumps into thread_a on its own stack.

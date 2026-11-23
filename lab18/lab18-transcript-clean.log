@@ -1,0 +1,1184 @@
+Script started on 2026-11-23 15:37:12+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="101" LINES="47"]
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ pwd
+666;vte.shell.preexec!/home/capziro/xv6-riscv
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCriscv64-linux-gnu-gcci--versions|vheadp-1ro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mriscv64-linux-gnu-gcc --version | head -127m
+666;vte.shell.preexec!riscv64-linux-gnu-gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCqemu-system-riscv64p--versionr|sheadc-1ziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mqemu-system-riscv64 --version | head -127m
+666;vte.shell.preexec!QEMU emulator version 10.2.1 (Debian 1:10.2.1+ds-1ubuntu3.3)
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgit log --oneline -327m
+ACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgit log --oneline -3
+A
+33m920d7a3m33mp(m1;36mHEADm33m -> m1;32mriscvm33m)m Lab 13: semaphores in the kernel (sem_init, sem_down, sem_up)m
+33m87e9855m Lab 10: trace (state before Lab 13)m
+33m06aad25m33m (m1;31morigin/riscvm33m, m1;31morigin/HEADm33m)m Add killzero testm
+K?1l666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgitgitastatuss--short
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrep.-ns'swtch'7kernel/swtch.Sokernel/defs.hro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgrep -n 'swtch' kernel/swtch.S kernel/defs.h27m
+666;vte.shell.preexec!35mKkernel/swtch.SmK36mK:mK32mK3mK36mK:mK#   void 01;31mKswtchmK(struct context *old, struct context *new);
+35mKkernel/swtch.SmK36mK:mK32mK8mK36mK:mK.globl 01;31mKswtchmK
+35mKkernel/swtch.SmK36mK:mK32mK9mK36mK:mK01;31mKswtchmK:
+35mKkernel/defs.hmK36mK:mK32mK107mK36mK:mK// 01;31mKswtchmK.S
+35mKkernel/defs.hmK36mK:mK32mK108mK36mK:mKvoid		  01;31mKswtchmK(struct context*, struct context*);
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrepp-nr-A16h'^structicontext'ikernel/proc.hcapziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgrep -n -A16 '^struct context' kernel/proc.h27m
+666;vte.shell.preexec!32mK2mK36mK:mK01;31mKstruct contextmK {
+32mK3mK36mK-mK	uint64 ra;
+32mK4mK36mK-mK	uint64 sp;
+32mK5mK36mK-mK
+32mK6mK36mK-mK	// callee-saved
+32mK7mK36mK-mK	uint64 s0;
+32mK8mK36mK-mK	uint64 s1;
+32mK9mK36mK-mK	uint64 s2;
+32mK10mK36mK-mK	 uint64 s3;
+32mK11mK36mK-mK	 uint64 s4;
+32mK12mK36mK-mK	 uint64 s5;
+32mK13mK36mK-mK	 uint64 s6;
+32mK14mK36mK-mK	 uint64 s7;
+32mK15mK36mK-mK	 uint64 s8;
+32mK16mK36mK-mK	 uint64 s9;
+32mK17mK36mK-mK	 uint64 s10;
+32mK18mK36mK-mK	 uint64 s11;
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrepp-nr'inthexit\|voidoprintf\|int;pause'ouser/user.h~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgrep -n 'int exit\|void printf\|int pause' user/user.h27m
+666;vte.shell.preexec!32mK7mK36mK:mK01;31mKint exitmK(int) __attribute__((noreturn));
+32mK25mK36mK:mK01;31mKint pausemK(int);
+32mK51mK36mK:mK01;31mKvoid printfmK(const char *, ...) __attribute__((format(printf, 1, 2)));
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrepp-nr'^ULIB\|_pingpong'vMakefile;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgrep -n '^ULIB\|_pingpong' Makefile27m
+666;vte.shell.preexec!32mK105mK36mK:mK01;31mKULIBmK = $U/ulib.o $U/usys.o $U/printf.o $U/umalloc.o
+32mK163mK36mK:mK	$U/01;31mK_pingpongmK\
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCClscuser/uthread*/2>/dev/null-||sechoc'noiuthreadifiles~yet'-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mls user/uthread* 2>/dev/null || echo 'no uthread files yet'27m
+666;vte.shell.preexec!no uthread files yet
+0;capziro@capziro-3:e~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$rgit:addv-Ar&&cgit6write-tree.>r~/lab18-base.treei&&@catz~/lab18-base.treev01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgit add -A && git write-tree > ~/lab18-base.tree && cat ~/lab18-base.t27m7mr27m7mee27mA
+666;vte.shell.preexec!e76c29e85e14f7c94f759ee273426db57d9d2d11
+0;capziro@capziro-3:e~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$r7mcat/>v~/ins.py6<<v'EOF'27m.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$
+7m#!/usr/bin/env python327m
+7m# ins.py FILE ANCHOR_REGEX TEXT27m
+7m# Inserts TEXT after the first line that matches ANCHOR_REGEX.27m
+7m# Does nothing if TEXT is already in FILE.27m
+7mimport re, sys27m
+7mpath, anchor, text = sys.argv[1], sys.argv[2], sys.argv[3]27m
+7mtext = text.replace('\\n', '\n').replace('\\t', '\t')27m
+7mif not text.endswith('\n'):27m
+7m    text += '\n'27m
+7msrc = open(path).read()27m
+7mif text in src:27m
+7m    print("ALREADY THERE:", path)27m
+7m    sys.exit(0)27m
+7mlines = src.splitlines(keepends=True)27m
+7mfor i, line in enumerate(lines):27m
+7m    if re.search(anchor, line):27m
+7m	  lines.insert(i + 1, text)27m
+7m	  open(path, 'w').write(''.join(lines))27m
+7m	  print("INSERTED after line", i + 1, "of", path)27m
+7m	  sys.exit(0)27m
+7mprint("ANCHOR NOT FOUND:", anchor)27m
+7msys.exit(1)27m
+7mEOF27m
+0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$(cat >r~/ins.py.<< 'EOF'7m7m'27mAAAAAAAAAAAAAAAAAAAAAAAAA
+#!/usr/bin/env python3
+# ins.py FILE ANCHOR_REGEX TEXT
+# Inserts TEXT after the first line that matches ANCHOR_REGEX.
+# Does nothing if TEXT is already in FILE.
+import re, sys
+path, anchor, text = sys.argv[1], sys.argv[2], sys.argv[3]
+text = text.replace('\\n', '\n').replace('\\t', '\t')
+if not text.endswith('\n'):
+    text += '\n'
+src = open(path).read()
+if text in src:
+    print("ALREADY THERE:", path)
+    sys.exit(0)
+lines = src.splitlines(keepends=True)
+for i, line in enumerate(lines):
+    if re.search(anchor, line):
+	lines.insert(i + 1, text)
+	open(path, 'w').write(''.join(lines))
+	print("INSERTED after line", i + 1, "of", path)
+	sys.exit(0)
+print("ANCHOR NOT FOUND:", anchor)
+sys.exit(1)
+EOF
+python3 -c 'import ast,os; ast.parse(open(os.path.expanduser("~/ins.py")).read()); print("ins.py OK")'
+666;vte.shell.preexec!ins.py OK
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ H2J0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ cat > user/uthread.c << 'EOF'
+#include "kernel/types.h"
+#include "user/user.h"
+
+/* Possible states of a thread: */
+#define FREE	    0x0
+#define RUNNING	    0x1
+#define RUNNABLE    0x2
+
+#define STACK_SIZE  8192
+#define MAX_THREAD  4
+
+/* the registers a thread must keep across a switch (callee-saved) */
+struct context {
+  uint64 ra;	/* return address: where the thread continues */
+  uint64 sp;	/* stack pointer: the thread's own stack */
+
+  /* callee-saved registers */
+  uint64 s0;
+  uint64 s1;
+  uint64 s2;
+  uint64 s3;
+  uint64 s4;
+  uint64 s5;
+  uint64 s6;
+  uint64 s7;
+  uint64 s8;
+  uint64 s9;
+  uint64 s10;
+  uint64 s11;
+};
+
+struct thread {
+  struct context ctx;					     /* saved registers */
+  char	     stack[STACK_SIZE] __attribute__((aligned(16))); /* the thread's own stack */
+  int	     state;					     /* FREE, RUNNING, RUNNABLE */
+};
+struct thread all_thread[MAX_THREAD];
+struct thread *current_thread;
+extern void thread_switch(struct context *old, struct context *new);
+
+void
+thread_init(void)
+{
+  /* main() is thread 0: it will run first */
+  current_thread = &all_thread[0];
+  current_thread->state = RUNNING;
+}
+
+void
+thread_schedule(void)
+{
+  struct thread *t, *next_thread;
+
+  /* find another runnable thread, round robin */
+  next_thread = 0;
+  t = current_thread + 1;
+  for(int i = 0; i < MAX_THREAD; i++){
+    if(t >= all_thread + MAX_THREAD)
+      t = all_thread;
+    if(t->state == RUNNABLE) {
+      next_thread = t;
+      break;
+    }
+    t = t + 1;
+  }
+
+  if (next_thread == 0) {
+    printf("thread_schedule: no runnable threads\n");
+    exit(-1);
+  }
+
+  if (current_thread != next_thread) {	       /* switch threads? */
+    struct thread *old = current_thread;
+    next_thread->state = RUNNING;
+    current_thread = next_thread;
+    /* save the old thread's registers, load the next thread's registers */
+    thread_switch(&old->ctx, &next_thread->ctx);
+  }
+}
+
+void
+thread_create(void (*func)())
+{
+  struct thread *t;
+
+  for (t = all_thread; t < all_thread + MAX_THREAD; t++) {
+    if (t->state == FREE) break;
+  }
+  t->state = RUNNABLE;
+  /* the first switch "returns" into func ... */
+  t->ctx.ra = (uint64)func;
+  /* ... on the thread's own stack, which grows down from its top */
+  t->ctx.sp = (uint64)(t->stack + STACK_SIZE);
+}
+
+void
+thread_yield(void)
+{
+  current_thread->state = RUNNABLE;
+  thread_schedule();
+}
+
+volatile int a_started, b_started, c_started;
+volatile int a_n, b_n, c_n;
+
+void
+thread_a(void)
+{
+  int i;
+  printf("thread_a started\n");
+  a_started = 1;
+  while(b_started == 0 || c_started == 0)
+    thread_yield();
+
+  for (i = 0; i < 100; i++) {
+    printf("thread_a %d\n", i);
+    a_n += 1;
+    thread_yield();
+  }
+  printf("thread_a: exit after %d\n", a_n);
+
+  current_thread->state = FREE;
+  thread_schedule();
+}
+
+void
+thread_b(void)
+{
+  int i;
+  printf("thread_b started\n");
+  b_started = 1;
+  while(a_started == 0 || c_started == 0)
+    thread_yield();
+
+7m  for (i = 0; i < 100; i++) {27m
+7m    printf("thread_b %d\n", i);27m
+7m    b_n += 1;27m
+7m    thread_yield();27m
+7m  }27m
+7m  printf("thread_b: exit after %d\n", b_n);27m
+
+7m  current_thread->state = FREE;27m
+7m  thread_schedule();27m
+7m}27m
+
+7mvoid27m
+7mthread_c(void)27m
+7m{27m
+7m  int i;27m
+7m  printf("thread_c started\n");27m
+7m  c_started = 1;27m
+7m  while(a_started == 0 || b_started == 0)27m
+7m    thread_yield();27m
+
+7m  for (i = 0; i < 100; i++) {27m
+7m    printf("thread_c %d\n", i);27m
+7m    c_n += 1;27m
+7m    thread_yield();27m
+7m  }27m
+7m  printf("thread_c: exit after %d\n", c_n);27m
+
+7m  current_thread->state = FREE;27m
+7m  thread_schedule();27m
+7m}27m
+
+7mint27m
+7mmain(int argc, char *argv[])27m
+7m{27m
+7m  a_started = b_started = c_started = 0;27m
+7m  a_n = b_n = c_n = 0;27m
+7m  thread_init();27m
+7m  thread_create(thread_a);27m
+7m  thread_create(thread_b);27m
+7m  thread_create(thread_c);27m
+7m  current_thread->state = FREE;      /* main is done: only a, b, c remain */27m
+7m  thread_schedule();27m
+7m  exit(0);27m
+7m}27m
+7mEOF27m
+7mgrep -c 'uint64 ' user/uthread.c27m
+7mforp(in='0;xi.<a100;xi++)\{thread_switch(&' user/uthread.c27mAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    printf("thread_b %d\n", i);
+    b_n += 1;
+    thread_yield();
+  }
+  printf("thread_b: exit after %d\n", b_n);
+
+  current_thread->state = FREE;
+  thread_schedule();
+}
+
+void
+thread_c(void)
+{
+  int i;
+  printf("thread_c started\n");
+  c_started = 1;
+  while(a_started == 0 || b_started == 0)
+    thread_yield();
+
+  for (i = 0; i < 100; i++) {
+    printf("thread_c %d\n", i);
+    c_n += 1;
+    thread_yield();
+  }
+  printf("thread_c: exit after %d\n", c_n);
+
+  current_thread->state = FREE;
+  thread_schedule();
+}
+
+int
+main(int argc, char *argv[])
+{
+  a_started = b_started = c_started = 0;
+  a_n = b_n = c_n = 0;
+  thread_init();
+  thread_create(thread_a);
+  thread_create(thread_b);
+  thread_create(thread_c);
+  current_thread->state = FREE;	     /* main is done: only a, b, c remain */
+  thread_schedule();
+  exit(0);
+}
+EOF
+grep -c 'uint64 ' user/uthread.c
+grep -n 'ctx\.ra\|ctx\.sp\|thread_switch(&' user/uthread.c
+666;vte.shell.preexec!143;C
+666;vte.shell.preexec!32mK77mK36mK:mK	 01;31mKthread_switch(&mKold->ctx, &next_thread->ctx);
+32mK91mK36mK:mK	 t->01;31mKctx.ramK = (uint64)func;
+32mK93mK36mK:mK	 t->01;31mKctx.spmK = (uint64)(t->stack + STACK_SIZE);
+0;capziro@capziro-3:e~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$rH2J0;capziro@capziro-3:s~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$zcat@>auser/uthread_switch.S6<<i'EOF'm$
+	.text
+
+7m	  /*27m
+7m	   * void thread_switch(struct context *old, struct context *new);27m
+7m	   *27m
+7m	   * Save the callee-saved registers of the current thread in *old (a0),27m
+7m	   * then load the registers of the next thread from *new (a1).27m
+7m	   * The offsets match struct context in uthread.c:27m
+7m	   * ra 0, sp 8, s0 16, s1 24, ... s11 104.27m
+7m	   */27m
+
+7m	  .globl thread_switch27m
+7mthread_switch:27m
+7m	  sd ra, 0(a0)	   # save current thread registers27m
+7m	  sd sp, 8(a0)27m
+7m	  sd s0, 16(a0)27m
+7m	  sd s1, 24(a0)27m
+7m	  sd s2, 32(a0)27m
+7m	  sd s3, 40(a0)27m
+7m	  sd s4, 48(a0)27m
+7m	  sd s5, 56(a0)27m
+7m	  sd s6, 64(a0)27m
+7m	  sd s7, 72(a0)27m
+7m	  sd s8, 80(a0)27m
+7m	  sd s9, 88(a0)27m
+7m	  sd s10, 96(a0)27m
+7m	  sd s11, 104(a0)27m
+
+7m	  ld ra, 0(a1)	   # load next thread registers27m
+7m	  ld sp, 8(a1)27m
+7m	  ld s0, 16(a1)27m
+7m	  ld s1, 24(a1)27m
+7m	  ld s2, 32(a1)27m
+7m	  ld s3, 40(a1)27m
+7m	  ld s4, 48(a1)27m
+7m	  ld s5, 56(a1)27m
+7m	  ld s6, 64(a1)27m
+7m	  ld s7, 72(a1)27m
+7m	  ld s8, 80(a1)27m
+7m	  ld s9, 88(a1)27m
+7m	  ld s10, 96(a1)27m
+7m	  ld s11, 104(a1)27m
+
+7m	  ret		   # return into the next thread (jump to the new ra)27m
+7mEOF27m
+7mgrep -c '^\s*sd ' user/uthread_switch.S; grep -c '^\s*ld ' user/uthread_switch.S27m
+7mdiff </*wk '$1=="sd"||$1=="ld"{print $1,$2,$3}' kernel/swtch.S) <(awk '$1=="sd"||$1=="ld"{print $1,$227m7m,27m7m$3}' user/uthread_switch.S) && echo 'same 28 sd/ld lines as kernel swtch'27mAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	 * void thread_switch(struct context *old, struct context *new);
+	 *
+	 * Save the callee-saved registers of the current thread in *old (a0),
+	 * then load the registers of the next thread from *new (a1).
+	 * The offsets match struct context in uthread.c:
+	 * ra 0, sp 8, s0 16, s1 24, ... s11 104.
+	 */
+
+	.globl thread_switch
+thread_switch:
+	sd ra, 0(a0)	 # save current thread registers
+	sd sp, 8(a0)
+	sd s0, 16(a0)
+	sd s1, 24(a0)
+	sd s2, 32(a0)
+	sd s3, 40(a0)
+	sd s4, 48(a0)
+	sd s5, 56(a0)
+	sd s6, 64(a0)
+	sd s7, 72(a0)
+	sd s8, 80(a0)
+	sd s9, 88(a0)
+	sd s10, 96(a0)
+	sd s11, 104(a0)
+
+	ld ra, 0(a1)	 # load next thread registers
+	ld sp, 8(a1)
+	ld s0, 16(a1)
+	ld s1, 24(a1)
+	ld s2, 32(a1)
+	ld s3, 40(a1)
+	ld s4, 48(a1)
+	ld s5, 56(a1)
+	ld s6, 64(a1)
+	ld s7, 72(a1)
+	ld s8, 80(a1)
+	ld s9, 88(a1)
+	ld s10, 96(a1)
+	ld s11, 104(a1)
+
+	ret		 # return into the next thread (jump to the new ra)
+EOF
+grep -c '^\s*sd ' user/uthread_switch.S; grep -c '^\s*ld ' user/uthread_switch.S
+diff <(awk '$1=="sd"||$1=="ld"{print $1,$2,$3}' kernel/swtch.S) <(awk '$1=="sd"||$1=="ld"{print $1,$2,$3}' user/uthread_switch.S) && echo 'same 28 sd/ld lines as kernel swtch'
+666;vte.shell.preexec!143;C
+14
+666;vte.shell.preexec!same 28 sd/ld lines as kernel swtch
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mpython3 ~/ins.py Makefile '\$U/_pingpong\\' $'\t$U/_uthread\\'27m
+7mgrep -q '^\$U/_uthread:' Makefile || printf '\n$U/_uthread: $U/uthread.o $U/uthread_switch.o $(ULIB) 27m7m$27m7mU/user.ld\n\t$(LD) $(LDFLAGS) -T $U/user.ld -o $U/_uthread $U/uthread.o $U/uthread_switch.o $(ULIB)\27m7mn27m7m\t$(OBJDUMP) -S $U/_uthread > $U/uthread.asm\n' >> Makefile27m
+7mgrep -n '_uthread' Makefile27m
+0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ python3 ~/ins.py Makefile '\$U/_pingpong\\' $'\t$U/_uthread\\'
+grep -q '^\$U/_uthread:' Makefile || printf '\n$U/_uthread: $U/uthread.o $U/uthread_switch.o $(ULIB) $U/user.ld\n\t$(LD) $(LDFLAGS) -T $U/user.ld -o $U/_uthread $U/uthread.o $U/uthread_switch.o $(ULIB)\n\t$(OBJDUMP) -S $U/_uthread > $U/uthread.asm\n' >> Makefile
+grep -n '_uthread' Makefile
+tail -3 Makefile | cat -A
+666;vte.shell.preexec!INSERTED after line 163 of Makefile
+666;vte.shell.preexec!32mK164mK36mK:mK	$U/01;31mK_uthreadmK\
+32mK218mK36mK:mK$U/01;31mK_uthreadmK: $U/uthread.o $U/uthread_switch.o $(ULIB) $U/user.ld
+32mK219mK36mK:mK	$(LD) $(LDFLAGS) -T $U/user.ld -o $U/01;31mK_uthreadmK $U/uthread.o $U/uthread_switch.o $(ULIB)
+32mK220mK36mK:mK	$(OBJDUMP) -S $U/01;31mK_uthreadmK > $U/uthread.asm
+666;vte.shell.preexec!$U/_uthread: $U/uthread.o $U/uthread_switch.o $(ULIB) $U/user.ld$
+^I$(LD) $(LDFLAGS) -T $U/user.ld -o $U/_uthread $U/uthread.o $U/uthread_switch.o $(ULIB)$
+^I$(OBJDUMP) -S $U/_uthread > $U/uthread.asm$
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mmake fs.img 2>&1 | tail -327m
+7mls -l user/_uthread27m
+7mriscv64-linux-gnu-nm user/_uthread | grep -E ' (thread_switch|thread_[abc]|all_thread)$'27m
+7mgrep -A6 '<thread_switch>:' user/uthrmakeafs.imgA2>&1 | tail -3
+ls -l user/_uthread
+riscv64-linux-gnu-nm user/_uthread | grep -E ' (thread_switch|thread_[abc]|all_thread)$'
+grep -A6 '<thread_switch>:' user/uthread.asm
+666;vte.shell.preexec!nmeta 47 (boot, super, log blocks 31, inode blocks 13, bitmap blocks 1) blocks 1953 total 2000
+balloc: first 1408 blocks have been allocated
+balloc: write bitmap block at sector 46
+666;vte.shell.preexec!-rwxrwxr-x 1 capziro capziro 45728 Nov 23 15:41 0m01;32muser/_uthread0m
+666;vte.shell.preexec!0000000000002030 B01;31mK all_threadmK
+000000000000011c T01;31mK thread_amK
+00000000000001d0 T01;31mK thread_bmK
+0000000000000284 T01;31mK thread_cmK
+00000000000003b2 T01;31mK thread_switchmK
+666;vte.shell.preexec!00000000000003b2 01;31mK<thread_switch>:mK
+ 3b2:	00153023		sd	ra,0(a0)
+ 3b6:	00253423		sd	sp,8(a0)
+ 3ba:	e900			sd	s0,16(a0)
+ 3bc:	ed04			sd	s1,24(a0)
+ 3be:	03253023		sd	s2,32(a0)
+ 3c2:	03353423		sd	s3,40(a0)
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mmakmakemqemu
+666;vte.shell.preexec!qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$ uthread
+thread_a started
+thread_b started
+thread_c started
+thread_c 0
+thread_a 0
+thread_b 0
+thread_c 1
+thread_a 1
+thread_b 1
+thread_c 2
+thread_a 2
+thread_b 2
+thread_c 3
+thread_a 3
+thread_b 3
+thread_c 4
+thread_a 4
+thread_b 4
+thread_c 5
+thread_a 5
+thread_b 5
+thread_c 6
+thread_a 6
+thread_b 6
+thread_c 7
+thread_a 7
+thread_b 7
+thread_c 8
+thread_a 8
+thread_b 8
+thread_c 9
+thread_a 9
+thread_b 9
+thread_c 10
+thread_a 10
+thread_b 10
+thread_c 11
+thread_a 11
+thread_b 11
+thread_c 12
+thread_a 12
+thread_b 12
+thread_c 13
+thread_a 13
+thread_b 13
+thread_c 14
+thread_a 14
+thread_b 14
+thread_c 15
+thread_a 15
+thread_b 15
+thread_c 16
+thread_a 16
+thread_b 16
+thread_c 17
+thread_a 17
+thread_b 17
+thread_c 18
+thread_a 18
+thread_b 18
+thread_c 19
+thread_a 19
+thread_b 19
+thread_c 20
+thread_a 20
+thread_b 20
+thread_c 21
+thread_a 21
+thread_b 21
+thread_c 22
+thread_a 22
+thread_b 22
+thread_c 23
+thread_a 23
+thread_b 23
+thread_c 24
+thread_a 24
+thread_b 24
+thread_c 25
+thread_a 25
+thread_b 25
+thread_c 26
+thread_a 26
+thread_b 26
+thread_c 27
+thread_a 27
+thread_b 27
+thread_c 28
+thread_a 28
+thread_b 28
+thread_c 29
+thread_a 29
+thread_b 29
+thread_c 30
+thread_a 30
+thread_b 30
+thread_c 31
+thread_a 31
+thread_b 31
+thread_c 32
+thread_a 32
+thread_b 32
+thread_c 33
+thread_a 33
+thread_b 33
+thread_c 34
+thread_a 34
+thread_b 34
+thread_c 35
+thread_a 35
+thread_b 35
+thread_c 36
+thread_a 36
+thread_b 36
+thread_c 37
+thread_a 37
+thread_b 37
+thread_c 38
+thread_a 38
+thread_b 38
+thread_c 39
+thread_a 39
+thread_b 39
+thread_c 40
+thread_a 40
+thread_b 40
+thread_c 41
+thread_a 41
+thread_b 41
+thread_c 42
+thread_a 42
+thread_b 42
+thread_c 43
+thread_a 43
+thread_b 43
+thread_c 44
+thread_a 44
+thread_b 44
+thread_c 45
+thread_a 45
+thread_b 45
+thread_c 46
+thread_a 46
+thread_b 46
+thread_c 47
+thread_a 47
+thread_b 47
+thread_c 48
+thread_a 48
+thread_b 48
+thread_c 49
+thread_a 49
+thread_b 49
+thread_c 50
+thread_a 50
+thread_b 50
+thread_c 51
+thread_a 51
+thread_b 51
+thread_c 52
+thread_a 52
+thread_b 52
+thread_c 53
+thread_a 53
+thread_b 53
+thread_c 54
+thread_a 54
+thread_b 54
+thread_c 55
+thread_a 55
+thread_b 55
+thread_c 56
+thread_a 56
+thread_b 56
+thread_c 57
+thread_a 57
+thread_b 57
+thread_c 58
+thread_a 58
+thread_b 58
+thread_c 59
+thread_a 59
+thread_b 59
+thread_c 60
+thread_a 60
+thread_b 60
+thread_c 61
+thread_a 61
+thread_b 61
+thread_c 62
+thread_a 62
+thread_b 62
+thread_c 63
+thread_a 63
+thread_b 63
+thread_c 64
+thread_a 64
+thread_b 64
+thread_c 65
+thread_a 65
+thread_b 65
+thread_c 66
+thread_a 66
+thread_b 66
+thread_c 67
+thread_a 67
+thread_b 67
+thread_c 68
+thread_a 68
+thread_b 68
+thread_c 69
+thread_a 69
+thread_b 69
+thread_c 70
+thread_a 70
+thread_b 70
+thread_c 71
+thread_a 71
+thread_b 71
+thread_c 72
+thread_a 72
+thread_b 72
+thread_c 73
+thread_a 73
+thread_b 73
+thread_c 74
+thread_a 74
+thread_b 74
+thread_c 75
+thread_a 75
+thread_b 75
+thread_c 76
+thread_a 76
+thread_b 76
+thread_c 77
+thread_a 77
+thread_b 77
+thread_c 78
+thread_a 78
+thread_b 78
+thread_c 79
+thread_a 79
+thread_b 79
+thread_c 80
+thread_a 80
+thread_b 80
+thread_c 81
+thread_a 81
+thread_b 81
+thread_c 82
+thread_a 82
+thread_b 82
+thread_c 83
+thread_a 83
+thread_b 83
+thread_c 84
+thread_a 84
+thread_b 84
+thread_c 85
+thread_a 85
+thread_b 85
+thread_c 86
+thread_a 86
+thread_b 86
+thread_c 87
+thread_a 87
+thread_b 87
+thread_c 88
+thread_a 88
+thread_b 88
+thread_c 89
+thread_a 89
+thread_b 89
+thread_c 90
+thread_a 90
+thread_b 90
+thread_c 91
+thread_a 91
+thread_b 91
+thread_c 92
+thread_a 92
+thread_b 92
+thread_c 93
+thread_a 93
+thread_b 93
+thread_c 94
+thread_a 94
+thread_b 94
+thread_c 95
+thread_a 95
+thread_b 95
+thread_c 96
+thread_a 96
+thread_b 96
+thread_c 97
+thread_a 97
+thread_b 97
+thread_c 98
+thread_a 98
+thread_b 98
+thread_c 99
+thread_a 99
+thread_b 99
+thread_c: exit after 100
+thread_a: exit after 100
+thread_b: exit after 100
+thread_schedule: no runnable threads
+$ uthread | grep started
+uthread | grep 99
+uthread | grep exit
+uthread | wcthread_a started
+thread_b started
+thread_c started
+$ thread_c 99
+thread_a 99
+thread_b 99
+$ thread_c: exit after 100
+thread_a: exit after 100
+thread_b: exit after 100
+$ QEMU: Terminated
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mcp user/uthread.c user/uthread_nosp.c27m
+7msed -i 's|^  t->ctx.sp = .*|	/* experiment: sp is not set, so it stays 0 */|' user/uthread_nosp.c27m
+7mgrep -n 'ctx\.ra\|ctx\.sp\|experiment' user/uthread_nosp.c27m
+7mgrep -n 'ctx\.sp' user/uthread.c27m
+7mpython3 ~/ins.py Makefile '\$U/_uthread\\' $'\t$U/_uthread_nosp\\'27m
+7mgrep -q '^\$U/_uthread_nosp:' Makefile || printf '$U/_uthread_nosp: $U/uthread_nosp.o $U/uthread_swit27m7mc27m7mh.o $(ULIB) $U/user.ld\n\t$(LD) $(LDFLAGS) -T $U/user.ld -o $U/_uthread_nosp $U/uthread_nosp.o $U/ut27m7mh27m7mread_switch.o $(ULIB)\n' >> Makefile27m
+7mgrep -n 'uthread_nosp' Makefile27m
+0;capziro@capziro-3:A~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ cp user/uthread.c user/uthread_nosp.c
+sed -i 's|^  t->ctx.sp = .*|  /* experiment: sp is not set, so it stays 0 */|' user/uthread_nosp.c
+grep -n 'ctx\.ra\|ctx\.sp\|experiment' user/uthread_nosp.c
+grep -n 'ctx\.sp' user/uthread.c
+python3 ~/ins.py Makefile '\$U/_uthread\\' $'\t$U/_uthread_nosp\\'
+grep -q '^\$U/_uthread_nosp:' Makefile || printf '$U/_uthread_nosp: $U/uthread_nosp.o $U/uthread_switch.o $(ULIB) $U/user.ld\n\t$(LD) $(LDFLAGS) -T $U/user.ld -o $U/_uthread_nosp $U/uthread_nosp.o $U/uthread_switch.o $(ULIB)\n' >> Makefile
+grep -n 'uthread_nosp' Makefile
+make qemu
+666;vte.shell.preexec!32mK91mK36mK:mK  t->01;31mKctx.ramK = (uint64)func;
+32mK93mK36mK:mK	 /* 01;31mKexperimentmK: sp is not set, so it stays 0 */
+666;vte.shell.preexec!32mK93mK36mK:mK  t->01;31mKctx.spmK = (uint64)(t->stack + STACK_SIZE);
+666;vte.shell.preexec!INSERTED after line 164 of Makefile
+666;vte.shell.preexec!32mK165mK36mK:mK	$U/_01;31mKuthread_nospmK\
+32mK222mK36mK:mK$U/_01;31mKuthread_nospmK: $U/01;31mKuthread_nospmK.o $U/uthread_switch.o $(ULIB) $U/user.ld
+32mK223mK36mK:mK	$(LD) $(LDFLAGS) -T $U/user.ld -o $U/_01;31mKuthread_nospmK $U/01;31mKuthread_nospmK.o $U/uthread_switch.o $(ULIB)
+666;vte.shell.preexec!riscv64-linux-gnu-gcc -Wall -Werror -Wno-unknown-attributes -O -fno-omit-frame-pointer -ggdb -gdwarf-2 -ffile-prefix-map=/home/capziro/xv6-riscv=. -march=rv64gc -std=gnu99 -MD -mcmodel=medany -ffreestanding -fno-common -nostdlib -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset -fno-builtin-memmove -fno-builtin-memcmp -fno-builtin-log -fno-builtin-bzero -fno-builtin-strchr -fno-builtin-exit -fno-builtin-malloc -fno-builtin-putc -fno-builtin-free -fno-builtin-memcpy -Wno-main -fno-builtin-printf -fno-builtin-fprintf -fno-builtin-vprintf -I. -fno-stack-protector -fno-pie -no-pie	-c -o user/uthread_nosp.o user/uthread_nosp.c
+riscv64-linux-gnu-ld -z max-page-size=4096 -T user/user.ld -o user/_uthread_nosp user/uthread_nosp.o user/uthread_switch.o user/ulib.o user/usys.o user/printf.o user/umalloc.o
+mkfs/mkfs fs.img README user/_cat user/_echo user/_forktest user/_grep user/_init user/_kill user/_ln user/_ls user/_mkdir user/_rm user/_sh user/_stressfs user/_usertests user/_grind user/_wc user/_zombie user/_semtest user/_mix user/_trytest user/_trace user/_logstress user/_forphan user/_dorphan user/_sync user/_sleep user/_args user/_mystat user/_find user/_run user/_pingpong user/_uthread user/_uthread_nosp
+nmeta 47 (boot, super, log blocks 31, inode blocks 13, bitmap blocks 1) blocks 1953 total 2000
+balloc: first 1454 blocks have been allocated
+balloc: write bitmap block at sector 46
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$ uthread_nosp
+uthreadusertrap(): unexpected scause 0xf pid=3
+	    sepc=0x114 stval=0xfffffffffffffff8
+$ uthread_nosp
+exec uthreaduthread_nosp failed
+$ uthread
+thread_a started
+thread_b started
+thread_c started
+thread_c 0
+thread_a 0
+thread_b 0
+thread_c 1
+thread_a 1
+thread_b 1
+thread_c 2
+thread_a 2
+thread_b 2
+thread_c 3
+thread_a 3
+thread_b 3
+thread_c 4
+thread_a 4
+thread_b 4
+thread_c 5
+thread_a 5
+thread_b 5
+thread_c 6
+thread_a 6
+thread_b 6
+thread_c 7
+thread_a 7
+thread_b 7
+thread_c 8
+thread_a 8
+thread_b 8
+thread_c 9
+thread_a 9
+thread_b 9
+thread_c 10
+thread_a 10
+thread_b 10
+thread_c 11
+thread_a 11
+thread_b 11
+thread_c 12
+thread_a 12
+thread_b 12
+thread_c 13
+thread_a 13
+thread_b 13
+thread_c 14
+thread_a 14
+thread_b 14
+thread_c 15
+thread_a 15
+thread_b 15
+thread_c 16
+thread_a 16
+thread_b 16
+thread_c 17
+thread_a 17
+thread_b 17
+thread_c 18
+thread_a 18
+thread_b 18
+thread_c 19
+thread_a 19
+thread_b 19
+thread_c 20
+thread_a 20
+thread_b 20
+thread_c 21
+thread_a 21
+thread_b 21
+thread_c 22
+thread_a 22
+thread_b 22
+thread_c 23
+thread_a 23
+thread_b 23
+thread_c 24
+thread_a 24
+thread_b 24
+thread_c 25
+thread_a 25
+thread_b 25
+thread_c 26
+thread_a 26
+thread_b 26
+thread_c 27
+thread_a 27
+thread_b 27
+thread_c 28
+thread_a 28
+thread_b 28
+thread_c 29
+thread_a 29
+thread_b 29
+thread_c 30
+thread_a 30
+thread_b 30
+thread_c 31
+thread_a 31
+thread_b 31
+thread_c 32
+thread_a 32
+thread_b 32
+thread_c 33
+thread_a 33
+thread_b 33
+thread_c 34
+thread_a 34
+thread_b 34
+thread_c 35
+thread_a 35
+thread_b 35
+thread_c 36
+thread_a 36
+thread_b 36
+thread_c 37
+thread_a 37
+thread_b 37
+thread_c 38
+thread_a 38
+thread_b 38
+thread_c 39
+thread_a 39
+thread_b 39
+thread_c 40
+thread_a 40
+thread_b 40
+thread_c 41
+thread_a 41
+thread_b 41
+thread_c 42
+thread_a 42
+thread_b 42
+thread_c 43
+thread_a 43
+thread_b 43
+thread_c 44
+thread_a 44
+thread_b 44
+thread_c 45
+thread_a 45
+thread_b 45
+thread_c 46
+thread_a 46
+thread_b 46
+thread_c 47
+thread_a 47
+thread_b 47
+thread_c 48
+thread_a 48
+thread_b 48
+thread_c 49
+thread_a 49
+thread_b 49
+thread_c 50
+thread_a 50
+thread_b 50
+thread_c 51
+thread_a 51
+thread_b 51
+thread_c 52
+thread_a 52
+thread_b 52
+thread_c 53
+thread_a 53
+thread_b 53
+thread_c 54
+thread_a 54
+thread_b 54
+thread_c 55
+thread_a 55
+thread_b 55
+thread_c 56
+thread_a 56
+thread_b 56
+thread_c 57
+thread_a 57
+thread_b 57
+thread_c 58
+thread_a 58
+thread_b 58
+thread_c 59
+thread_a 59
+thread_b 59
+thread_c 60
+thread_a 60
+thread_b 60
+thread_c 61
+thread_a 61
+thread_b 61
+thread_c 62
+thread_a 62
+thread_b 62
+thread_c 63
+thread_a 63
+thread_b 63
+thread_c 64
+thread_a 64
+thread_b 64
+thread_c 65
+thread_a 65
+thread_b 65
+thread_c 66
+thread_a 66
+thread_b 66
+thread_c 67
+thread_a 67
+thread_b 67
+thread_c 68
+thread_a 68
+thread_b 68
+thread_c 69
+thread_a 69
+thread_b 69
+thread_c 70
+thread_a 70
+thread_b 70
+thread_c 71
+thread_a 71
+thread_b 71
+thread_c 72
+thread_a 72
+thread_b 72
+thread_c 73
+thread_a 73
+thread_b 73
+thread_c 74
+thread_a 74
+thread_b 74
+thread_c 75
+thread_a 75
+thread_b 75
+thread_c 76
+thread_a 76
+thread_b 76
+thread_c 77
+thread_a 77
+thread_b 77
+thread_c 78
+thread_a 78
+thread_b 78
+thread_c 79
+thread_a 79
+thread_b 79
+thread_c 80
+thread_a 80
+thread_b 80
+thread_c 81
+thread_a 81
+thread_b 81
+thread_c 82
+thread_a 82
+thread_b 82
+thread_c 83
+thread_a 83
+thread_b 83
+thread_c 84
+thread_a 84
+thread_b 84
+thread_c 85
+thread_a 85
+thread_b 85
+thread_c 86
+thread_a 86
+thread_b 86
+thread_c 87
+thread_a 87
+thread_b 87
+thread_c 88
+thread_a 88
+thread_b 88
+thread_c 89
+thread_a 89
+thread_b 89
+thread_c 90
+thread_a 90
+thread_b 90
+thread_c 91
+thread_a 91
+thread_b 91
+thread_c 92
+thread_a 92
+thread_b 92
+thread_c 93
+thread_a 93
+thread_b 93
+thread_c 94
+thread_a 94
+thread_b 94
+thread_c 95
+thread_a 95
+thread_b 95
+thread_c 96
+thread_a 96
+thread_b 96
+thread_c 97
+thread_a 97
+thread_b 97
+thread_c 98
+thread_a 98
+thread_b 98
+thread_c 99
+thread_a 99
+thread_b 99
+thread_c: exit after 100
+thread_a: exit after 100
+thread_b: exit after 100
+thread_schedule: no runnable threads
+$ QEMU:6Terminatedu-objdump -d user/_uthread_nosp | grep -A3 '<thread_a>:'
+0;capziro@capziro-3:e~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$rriscv64-linux-gnu-objdumpe-d.user/_uthread_nospz|rgrepp-A3o'<thread_a>:'cv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mriscv64-linux-gnu-objdump -d user/_uthread_nosp | grep -A3 '<thread_a>27m7m:27m7m'27mA
+666;vte.shell.preexec!0000000000000112 01;31mK<thread_a>:mK
+ 112:	7179			addi	sp,sp,-48
+ 114:	f406			sd	ra,40(sp)
+ 116:	f022			sd	s0,32(sp)
+0;capziro@capziro-3:e~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$rrm3-f/user/uthread_nosp.ceuser/uthread_nosp.oauser/uthread_nosp.dxuser/_uthread_nospiro@capziro-300m:01;34m~/xv6-riscv00m$ 7mrm -f user/uthread_nosp.c user/uthread_nosp.o user/uthread_nosp.d user27m7m/27m7m_uthread_nosp27mA
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCsedl-io'/uthread_nosp/d'cMakefile/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7msed -i '/uthread_nosp/d' Makefile27m
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgrep.-cs'uthread_nosp'/Makefile;3lsouser/uthread*6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mgrep -c 'uthread_nosp' Makefile; ls user/uthread*27m
+666;vte.shell.preexec!0
+user/uthread.asm  user/uthread.d  user/uthread_switch.S
+user/uthread.c	  user/uthread.o  user/uthread_switch.o
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ 7mmake fs.img > /dev/null 2>&1 && for p in uthread; do [ -x user/_$p ] &27m7m&27m7m echo "OK $p" || echo "FAIL $p"; done27m
+7mfor o in uthread uthread_switch; do [ -f user/$o.o ] && echo "OK $o.o" || echo "FAIL $o.o"; done27m
+0;capziro@capziro-3:2~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ make fs.img > /dev/null 2>&1 && for p in uthread; do [ -x user/_$p ] && echo "OK $p" || echo "FAIL $p"; done
+for o in uthread uthread_switch; do [ -f user/$o.o ] && echo "OK $o.o" || echo "FAIL $o.o"; done
+git status --short
+666;vte.shell.preexec!OK uthread
+666;vte.shell.preexec!OK uthread.o
+OK uthread_switch.o
+666;vte.shell.preexec! 31mMm Makefile
+31m??m user/uthread.c
+31m??m user/uthread_switch.S
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ exit
+666;vte.shell.preexec!exit
+
+Script done on 2026-11-23 15:47:31+02:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-23 15:49:31+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="101" LINES="47"]
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ make qemu
+666;vte.shell.preexec!qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$ uthread | wc
+307 622 3733
+$ QEMU: Terminated
+666;vte.shell.postexec=07;file://capziro-3/home/capziro/xv6-riscv0;capziro@capziro-3:~/xv6-riscv666;vte.shell.precmd!?2004h0;capziro@capziro-3: ~/xv6-riscv01;32mcapziro@capziro-300m:01;34m~/xv6-riscv00m$ exit
+666;vte.shell.preexec!exit
+
+Script done on 2026-11-23 15:50:06+02:00 [COMMAND_EXIT_CODE="0"]
